@@ -1,6 +1,6 @@
 # NotesApp - Session 02 lab
 
-Group members: fill in before submission.
+**Group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).
 
 Fork: https://github.com/pursurer/NoteApp. Baseline: `8d5916436b7516547898b17fc856a54807b3638f`.
 
@@ -9,7 +9,7 @@ Fork: https://github.com/pursurer/NoteApp. Baseline: `8d5916436b7516547898b17fc8
 The diagram follows course slide 34: three browsers, a larger Flask block, PostgreSQL, TB1/TB2 and a short flow list. Each of its nine numbered arrows maps to one STRIDE row.
 Teacher/Admin traffic and DB operations are grouped to keep the diagram readable. Auxiliary health, static assets, audit storage, CSV details and Admin Ping subprocess flows are outside this compact drawing.
 
-Open NotesApp-data-flow.excalidraw in https://excalidraw.com/. It includes the original diagram, six STRIDE questions and the complete table below it. PNGs are exported from that website.
+Open NotesApp-diagram-only.excalidraw (the data-flow diagram) and NotesApp-STRIDE.excalidraw (the six STRIDE questions and the complete table) in https://excalidraw.com/. PNGs are exported from that website.
 
 ## Flow list
 
@@ -39,4 +39,4 @@ The grade, user-management and Ping POST forms were inspected but not submitted.
 
 Evidence: observations.json, web/app.py, web/templates, db/init.sql, docker-compose.yml. PostgreSQL SHOW ssl returned off. The local compose.lab.yml binds localhost:8080, hides the DB host port and removes web host mounts.
 
-Before submission: add group members and review the nine flow/STRIDE pairs as a group. Keep both for Project 1.
+Project 1 turns this diagram and STRIDE table into the full risk analysis: see [the Project 1 report](../session03/project1/REPORT.md).

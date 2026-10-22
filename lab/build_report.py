@@ -39,12 +39,12 @@ def tables():
        [[f[0],f'{f[1]} -> {f[2]}',f[3],f[4],*RISKS[i]] for i,f in enumerate(FLOWS)])]:
         with (HERE/filename).open('w',encoding='utf-8-sig',newline='') as file:
             writer=csv.writer(file);writer.writerow(header);writer.writerows(rows)
-    lines=['# NotesApp - Session 02 lab','', 'Group members: fill in before submission.','',
+    lines=['# NotesApp - Session 02 lab','', '**Group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).','',
       f'Fork: {OBS["fork"]}. Baseline: `{OBS["source_commit"]}`.',
       '', '## Numbered data-flow diagram','',
       'The diagram follows course slide 34: three browsers, a larger Flask block, PostgreSQL, TB1/TB2 and a short flow list. Each of its nine numbered arrows maps to one STRIDE row.',
       'Teacher/Admin traffic and DB operations are grouped to keep the diagram readable. Auxiliary health, static assets, audit storage, CSV details and Admin Ping subprocess flows are outside this compact drawing.',
-      '', 'Open NotesApp-data-flow.excalidraw in https://excalidraw.com/. It includes the original diagram, six STRIDE questions and the complete table below it. PNGs are exported from that website.',
+      '', 'Open NotesApp-diagram-only.excalidraw (the data-flow diagram) and NotesApp-STRIDE.excalidraw (the six STRIDE questions and the complete table) in https://excalidraw.com/. PNGs are exported from that website.',
       '', '## Flow list','', '| ID | Sender -> receiver | Data | Boundary |','|---|---|---|---|']
     lines += [f'| {n} | {s} -> {r} | {data} | {tb} |' for n,s,r,data,tb in FLOWS]
     lines += ['', '## First STRIDE table','',
@@ -56,7 +56,7 @@ def tables():
       f'{len(OBS["events"])} normal HTTP requests covered anonymous, student, teacher and admin states. The student read their own seeded grade, the teacher page showed grade IDs, and the database digest was unchanged.',
       'The grade, user-management and Ping POST forms were inspected but not submitted. No attack payloads or load tests were used. DB flows were reconstructed from code, not packet capture.',
       '', 'Evidence: observations.json, web/app.py, web/templates, db/init.sql, docker-compose.yml. PostgreSQL SHOW ssl returned off. The local compose.lab.yml binds localhost:8080, hides the DB host port and removes web host mounts.',
-      '', 'Before submission: add group members and review the nine flow/STRIDE pairs as a group. Keep both for Project 1.', '']
+      '', 'Project 1 turns this diagram and STRIDE table into the full risk analysis: see [the Project 1 report](../session03/project1/REPORT.md).', '']
     (HERE/'REPORT.md').write_text('\n'.join(lines))
 
 

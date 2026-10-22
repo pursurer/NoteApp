@@ -2,6 +2,8 @@
 
 Date: 8 October 2026. Updated: 22 October 2026. Source: `Session 03 Symmetric Encryption.pdf`, slide 30.
 
+**Group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).
+
 ## Result
 
 The three parts are complete in the local homework environment.

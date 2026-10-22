@@ -7,7 +7,7 @@ record grades and comments for their classes, students read their own grades, an
 admin manages users and classes.
 
 Class 4 adds HMAC-SHA256 to CSV exports and a teacher-only verification page.
-See [the Class 4 instructions](session04/README.zh-CN.md) for use and tests.
+See [the Class 4 report](session04/REPORT.md) for the design and the checks.
 
 Class 5 HTTP capture, HTTPS and password storage: the two lab reports are in the section below.
 
@@ -22,10 +22,13 @@ After the lab, the app runs again on plain HTTP (`http://localhost:8080`), as th
 
 ## P1, C3 and C4 delivery
 
-- P1 group: **ZIQIAN YU (2023902046)**; **HAOJIE SONG (2023905496)**.
-- [P1 risk report](session03/project1/REPORT.md): diagram with TB1-TB7 and 21 flows, six STRIDE categories, 18 scored risks, and the top three fixes.
+- P1, C3 and C4 group: **ZIQIAN YU (2023902046)**; **HAOJIE SONG (2023905496)**.
+- [P1 risk report](session03/project1/REPORT.md) ([PDF](session03/project1/Session03-Project1-Risk-Analysis.pdf)): diagram with TB1-TB7 and 21 flows, six STRIDE categories, 18 scored risks, and the top three fixes.
 - [Three-minute speaking script](session03/project1/PRESENTATION-3min.md).
-- C3 AES-256-GCM and C4 HMAC-SHA256 are integrated into **web/app.py**.
+- [Session 2 lab](lab/REPORT.md): the first data-flow diagram and STRIDE table that P1 builds on.
+- [C3 report](session03/REPORT.md): Caesar break, AES-ECB vs AES-GCM images, and AES-256-GCM encryption of the comment column.
+- [C4 report](session04/REPORT.md): HMAC-SHA256 on the grades CSV export and the teacher-only verification page.
+- C3 and C4 are integrated into **web/app.py**.
 - [Requirement-by-requirement acceptance](P1-C3-C4-REQUIREMENTS.md).
 
 The P1 report analyses the original baseline. Its source references resolve in
