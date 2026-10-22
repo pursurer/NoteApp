@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+import re
 from zipfile import ZIP_DEFLATED, ZipFile
 
 
@@ -24,6 +25,8 @@ def main():
         data = path.read_bytes()
         if name == "NoteApp/README.md":
             text = data.decode()
+            # The repository README names its owner; the P1 group is listed in the delivery section.
+            text = re.sub(r"^\*\*Student:\*\*[^\n]*\n\n", "", text, count=1, flags=re.M)
             start = text.index("Class 5 HTTP capture")
             end = text.index("## P1, C3 and C4 delivery", start)
             text = text[:start] + "This package contains P1, C3 and C4. C5 reports remain in the full working copy.\n\n" + text[end:]
