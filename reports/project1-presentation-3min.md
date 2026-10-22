@@ -35,9 +35,7 @@ For the second, use parameterized SQL, password hashing, and a database role wit
 
 For the third, close the database port, keep the database on an internal network, and use a secret password with a limited role.
 
-Our current C3 implementation encrypts comments with AES-GCM. C4 signs exported CSV files with HMAC. Both are integrated into the default app.
-
-These improvements do not replace identity or access checks. Our risk scores describe the original baseline, pinned at the teacher's commit `8d59164`. Proposed fixes must be tested against valid access and rejected access.
+Our risk scores describe the original baseline, pinned at the teacher's commit `8d59164`. Proposed fixes must be tested against valid access and rejected access.
 
 ## Presentation cues
 

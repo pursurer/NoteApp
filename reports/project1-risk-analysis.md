@@ -13,7 +13,7 @@ Runtime DB checks used a loopback-only local Compose overlay. The overlay change
 
 Protect identities, grades, comments, credentials, sessions, audit records, and availability.
 Code and configuration support the listed threats. No exploit or load test was run for this analysis.
-C3 and C4 now run in the default application. This risk analysis still describes the original baseline.
+This risk analysis describes the original baseline.
 
 ## Data-flow diagram
 
@@ -112,13 +112,6 @@ The application still reads and writes grades.
 R01, R02, and R15 tie. Each one bypasses the identity or access checks on which other defenses depend.
 R03, missing record scope, follows with 20: check student note ownership and teacher class ownership on every read, write, page, and export.
 The fixes above are proposals for the course baseline. They are not implemented by this risk report.
-
-## Effect of Session 03 encryption
-
-The homework addresses R04 for the current comment column when its key is unavailable to the attacker.
-With it, a direct DB login (R15) reads only comment ciphertext; names, grades, and passwords stay exposed.
-It does not establish a reduced risk for R01, R02, R03, or R15. The application still decrypts comments for its responses.
-Other fields, old plaintext copies, and web-process key access remain relevant.
 
 ## Presentation and files
 
