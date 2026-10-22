@@ -13,8 +13,14 @@ import base64
 import hashlib
 import subprocess
 
+from csv_integrity import CsvIntegrity, CsvIntegrityError
+
+from comment_crypto import CommentCipher, CommentIntegrityError
+
 import psycopg2
 import psycopg2.extras
+from argon2 import PasswordHasher
+from argon2.exceptions import InvalidHashError, VerificationError
 from flask import (
     Flask, request, session, redirect, url_for,
     render_template, Response, jsonify, abort,
@@ -30,7 +36,20 @@ JWT_SECRET = os.environ.get("JWT_SECRET", "s3cr3t")
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 
 app = Flask(__name__)
+ph = PasswordHasher()
 app.secret_key = SECRET_KEY
+
+# Session 03: fail at startup if the homework key is absent or invalid.
+COMMENT_CIPHER = CommentCipher.from_environment()
+
+
+@app.errorhandler(CommentIntegrityError)
+def invalid_comment(_error):
+    return jsonify({"error": "Comment verification failed."}), 500
+
+
+CSV_INTEGRITY = CsvIntegrity.from_environment()
+MAX_EXPORT_UPLOAD = 10 * 1024 * 1024
 
 LOG_FILE = os.environ.get("NOTESAPP_LOG", "/var/log/notesapp/app.log")
 
@@ -116,6 +135,10 @@ def current_identity():
 
 
 # --- Auth helpers -------------------------------------------------------------
+def is_argon2_hash(value: str) -> bool:
+    return value.startswith("$argon2")
+
+
 def login_required(role=None):
     if "user_id" not in session:
         return False
@@ -145,9 +168,10 @@ def login():
         username = request.form.get("username", "")
         password = request.form.get("password", "")
         # Flaw #8: SQL injection. Query built by string concatenation, no params.
+        # The username SQL stays for December's lab; passwords are checked below.
         query = (
-            "SELECT id, username, role FROM users "
-            "WHERE username = '" + username + "' AND password = '" + password + "'"
+            "SELECT id, username, role, password FROM users "
+            "WHERE username = '" + username + "'"
         )
         conn = get_db()
         cur = conn.cursor()
@@ -158,8 +182,27 @@ def login():
             # Keep the raw error visible - helps the SQLi session.
             error = f"Query error: {e}"
             row = None
-        conn.close()
-        if row:
+        authenticated = False
+        try:
+            if row:
+                stored = row["password"]
+                if is_argon2_hash(stored):
+                    try:
+                        ph.verify(stored, password)
+                        authenticated = True
+                    except (VerificationError, InvalidHashError):
+                        authenticated = False
+                elif stored == password:
+                    new_hash = ph.hash(password)
+                    cur.execute(
+                        "UPDATE users SET password = %s WHERE id = %s",
+                        (new_hash, row["id"]),
+                    )
+                    authenticated = True
+                    log(f"upgraded {row['username']} to argon2")
+        finally:
+            conn.close()
+        if authenticated:
             session["user_id"] = row["id"]
             session["username"] = row["username"]
             session["role"] = row["role"]
@@ -195,6 +238,7 @@ def dashboard():
     )
     notes = cur.fetchall()
     conn.close()
+    COMMENT_CIPHER.decrypt_rows(notes)
     return render_template("dashboard.html", notes=notes, token=session.get("token"))
 
 
@@ -218,6 +262,7 @@ def api_notes(note_id):
     conn.close()
     if not note:
         return jsonify({"error": "not found"}), 404
+    note["comment"] = COMMENT_CIPHER.decrypt(note["id"], note["comment"])
     note["grade"] = float(note["grade"]) if note["grade"] is not None else None
     return jsonify(note)
 
@@ -241,34 +286,48 @@ def teacher():
     cur.execute("SELECT id, username FROM users WHERE role = 'student' ORDER BY username")
     students = cur.fetchall()
     conn.close()
+    COMMENT_CIPHER.decrypt_rows(notes)
     return render_template("teacher.html", classes=classes, notes=notes, students=students)
 
 
 @app.route("/grades", methods=["POST"])
 def grades():
-    # Flaw #11: no CSRF token checked on this state-changing POST.
+    # This homework retains the course authentication and CSRF behavior.
     if not login_required("teacher"):
         return redirect(url_for("login"))
-    note_id = request.form.get("note_id", "").strip()
+    raw_note_id = request.form.get("note_id", "").strip()
+    try:
+        note_id = int(raw_note_id) if raw_note_id else None
+        if note_id is not None and note_id <= 0:
+            raise ValueError
+    except ValueError:
+        abort(400)
     student_id = request.form.get("student_id")
     class_id = request.form.get("class_id")
     grade = request.form.get("grade")
     comment = request.form.get("comment", "")
     conn = get_db()
-    cur = conn.cursor()
-    if note_id:
-        cur.execute(
-            "UPDATE notes SET grade = %s, comment = %s WHERE id = %s",
-            (grade, comment, note_id),
-        )
-    else:
-        cur.execute(
-            "INSERT INTO notes (student_id, class_id, grade, comment) "
-            "VALUES (%s, %s, %s, %s)",
-            (student_id, class_id, grade, comment),
-        )
-    conn.close()
-    log(f"grade write by {session.get('username')} note_id={note_id or 'new'}")
+    try:
+        with conn.cursor() as cur:
+            if note_id is not None:
+                stored = COMMENT_CIPHER.encrypt(note_id, comment)
+                cur.execute(
+                    "UPDATE notes SET grade = %s, comment = %s WHERE id = %s",
+                    (grade, stored, note_id),
+                )
+            else:
+                # Reserve the row ID before encryption. Never insert plaintext.
+                cur.execute("SELECT nextval(pg_get_serial_sequence('notes', 'id')) AS id")
+                note_id = cur.fetchone()["id"]
+                stored = COMMENT_CIPHER.encrypt(note_id, comment)
+                cur.execute(
+                    "INSERT INTO notes (id, student_id, class_id, grade, comment) "
+                    "VALUES (%s, %s, %s, %s, %s)",
+                    (note_id, student_id, class_id, grade, stored),
+                )
+    finally:
+        conn.close()
+    log(f"grade write by {session.get('username')} note_id={note_id}")
     return redirect(url_for("teacher"))
 
 
@@ -281,7 +340,7 @@ def export_csv():
     cur = conn.cursor()
     if class_id:
         cur.execute(
-            "SELECT u.username AS student, c.name AS class, n.grade, n.comment "
+            "SELECT n.id, u.username AS student, c.name AS class, n.grade, n.comment "
             "FROM notes n JOIN users u ON u.id = n.student_id "
             "JOIN classes c ON c.id = n.class_id WHERE n.class_id = %s "
             "ORDER BY u.username",
@@ -289,21 +348,47 @@ def export_csv():
         )
     else:
         cur.execute(
-            "SELECT u.username AS student, c.name AS class, n.grade, n.comment "
+            "SELECT n.id, u.username AS student, c.name AS class, n.grade, n.comment "
             "FROM notes n JOIN users u ON u.id = n.student_id "
             "JOIN classes c ON c.id = n.class_id ORDER BY c.name, u.username"
         )
     rows = cur.fetchall()
     conn.close()
+    COMMENT_CIPHER.decrypt_rows(rows)
     buf = io.StringIO()
     writer = csv.writer(buf)
     writer.writerow(["student", "class", "grade", "comment"])
     for r in rows:
         writer.writerow([r["student"], r["class"], r["grade"], r["comment"]])
     return Response(
-        buf.getvalue(), mimetype="text/csv",
-        headers={"Content-Disposition": "attachment; filename=grades.csv"},
+        CSV_INTEGRITY.sign(buf.getvalue().encode("utf-8")), mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=grades.csv",
+                 "Cache-Control": "no-store"},
     )
+
+
+@app.route("/verify-export", methods=["GET", "POST"])
+def verify_export():
+    if not login_required("teacher"):
+        return redirect(url_for("login"))
+    if request.method == "GET":
+        return render_template("verify_export.html", result=None)
+    # Bound the full multipart request before Flask parses the uploaded file.
+    if request.content_length is None:
+        return render_template("verify_export.html", result="missing"), 400
+    if request.content_length > MAX_EXPORT_UPLOAD + 64 * 1024:
+        abort(413)
+    uploaded = request.files.get("file")
+    if uploaded is None or not uploaded.filename:
+        return render_template("verify_export.html", result="missing"), 400
+    data = uploaded.stream.read(MAX_EXPORT_UPLOAD + 1)
+    if len(data) > MAX_EXPORT_UPLOAD:
+        abort(413)
+    try:
+        CSV_INTEGRITY.verify(data)
+    except CsvIntegrityError:
+        return render_template("verify_export.html", result="invalid"), 400
+    return render_template("verify_export.html", result="valid")
 
 
 @app.route("/admin")

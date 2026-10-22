@@ -12,3 +12,16 @@ venv/
 # Local env overrides
 .env
 .env.local
+
+# Generated local application keys (Docker uses named volumes).
+web/instance/
+
+# Class 5 TLS private key: generated locally, never included in coursework.
+nginx/certs/*.key
+
+# Original browser capture includes unrelated localhost cookies; use the sanitized copy.
+session05/evidence/http-login.pcap
+session05/evidence/http-login-lo0.pcapng
+
+# Class 5 HTTPS lab: self-signed certificate and its private key.
+nginx/certs/

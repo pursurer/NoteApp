@@ -1,0 +1,9 @@
+.git/
+**/instance/
+**/*.key
+**/.env*
+**/__pycache__/
+**/.venv/
+**/venv/
+session05/evidence/http-login.pcap
+session05/evidence/http-login-lo0.pcapng

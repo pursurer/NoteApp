@@ -1,0 +1,76 @@
+{
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "tests": [
+    {
+      "test": "__main__.AppTests.test_all_seed_comments_are_encrypted_and_authenticate",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_database_constraint_rejects_plaintext_writes",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_migration_is_idempotent",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_missing_key_stops_startup",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_student_dashboard_and_api_return_plaintext",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_tampering_returns_only_a_generic_error",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_teacher_create_encrypts_before_insert",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_teacher_page_and_both_csv_paths_return_plaintext",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_teacher_update_encrypts_before_storage",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.AppTests.test_wrong_runtime_key_returns_a_generic_error",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_ciphertext_from_another_row_is_rejected",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_equal_comments_have_different_nonces_and_ciphertext",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_invalid_key_sizes_and_row_ids_are_rejected",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_nonce_ciphertext_and_tag_tampering_are_rejected",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_plaintext_null_and_invalid_envelopes_are_rejected",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_round_trip_text_empty_null_and_unicode",
+      "status": "passed"
+    },
+    {
+      "test": "__main__.CipherTests.test_wrong_key_is_rejected",
+      "status": "passed"
+    }
+  ]
+}

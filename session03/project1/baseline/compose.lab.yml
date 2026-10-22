@@ -1,0 +1,23 @@
+# Local containment for this deliberately insecure teaching application.
+# Start with both files; this overlay does not change the course application.
+# docker compose -p notesapp-lab -f docker-compose.yml -f compose.lab.yml up -d --build
+services:
+  db:
+    ports: !reset []
+    mem_limit: 512m
+    cpus: 1.0
+  web:
+    ports: !override
+      - "127.0.0.1:8080:5000"
+    volumes: !override
+      - csvhmackey:/run/notesapp-export
+    networks:
+      - default
+      - frontend
+    mem_limit: 256m
+    cpus: 1.0
+networks:
+  default:
+    internal: true
+  frontend:
+    driver: bridge

@@ -1,0 +1,9 @@
+{
+  "compose.lab.yml": "356532e5eb88fbef302758a29bfb368c3a68a05d20c088321d0b205491ab7d2f",
+  "db/init.sql": "e040054c3c62d40fddb2d80428c4f7c408a1bbf759845861df912af06da0335e",
+  "docker-compose.yml": "32a4fe5d5de0006d9d752c2104995506f00fa86b2267e389a5279af61f9e391d",
+  "web/Dockerfile": "19b41f2f8a001e423b638c1935138e31391b0c9d33f8b2bad8be3cbc46017f75",
+  "web/app.py": "e000a50a9114acb147facb9cfbf104cdf4d92b27992c1ac093137dcf763ed948",
+  "web/templates/dashboard.html": "289df38fb4fa02c16c00d4487e48709c7d4d184581df2c1bae435b4eea600c54",
+  "web/templates/teacher.html": "eccdbe5e39cf34f19b4c816c4c41c5a97f65cbc1ed7bc3cf655259adb6df8259"
+}

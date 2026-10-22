@@ -25,4 +25,5 @@ RUN mkdir -p /var/log/notesapp /app/backups \
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+ENTRYPOINT ["python", "runtime.py", "--migrate"]
+CMD ["flask", "--app", "app", "run", "--host=0.0.0.0", "--port=5000", "--no-debugger", "--no-reload"]

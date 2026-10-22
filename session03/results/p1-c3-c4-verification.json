@@ -1,0 +1,139 @@
+{
+  "checked_at": "2026-10-22T13:37:28.486701+02:00",
+  "scope": [
+    "P1",
+    "C3",
+    "C4"
+  ],
+  "sources": {
+    "Session 03 Symmetric Encryption.pdf": "01890199b6756529c70ac785c6662cd195aaed973c9f82cfa79b67e15483d282",
+    "Class 4 \u2014 Hashing, integrity & asymmetric encryption\uff08\u526f\u672c\uff09.pptx": "73842e75cfca23e94a556e179838371d44960680615ff4a2f02e26870bc9d026"
+  },
+  "requirements_review": {
+    "session03_actual_pdf_pages": [
+      30,
+      31
+    ],
+    "class4_actual_slides": [
+      32,
+      33,
+      34
+    ],
+    "p1_flow_count": 21,
+    "p1_risk_count": 18,
+    "p1_stride_categories": [
+      "D",
+      "E",
+      "I",
+      "R",
+      "S",
+      "T"
+    ],
+    "p1_scores_valid": true,
+    "p1_trust_boundaries": [
+      "TB1",
+      "TB2",
+      "TB3",
+      "TB4",
+      "TB5",
+      "TB6",
+      "TB7"
+    ],
+    "p1_every_flow_in_stride_register": true,
+    "p1_top_three": [
+      "R01",
+      "R02",
+      "R15"
+    ],
+    "p1_baseline_compose": "teacher docker-compose.yml at 8d5916436b7516547898b17fc856a54807b3638f",
+    "p1_revised_at": "2026-10-22"
+  },
+  "environments": {
+    "notesapp-lab": {
+      "rows": 60,
+      "encrypted_rows": 60,
+      "logical_before_sha256": "fc656031ec8eea39519e647935f385ab4b43a61d0a0b39a9f82a1bb06126db76",
+      "logical_after_sha256": "fc656031ec8eea39519e647935f385ab4b43a61d0a0b39a9f82a1bb06126db76",
+      "logical_data_preserved": true,
+      "old_signed_csv_valid": true,
+      "tests_run": 45,
+      "failures": 0,
+      "errors": 0,
+      "test_breakdown": {
+        "aes": 17,
+        "hmac": 18,
+        "key_configuration": 5,
+        "existing_argon2_regression": 5
+      },
+      "users_and_original_row_counts_preserved": true
+    },
+    "notesapp-session03": {
+      "rows": 60,
+      "encrypted_rows": 60,
+      "logical_before_sha256": "fc656031ec8eea39519e647935f385ab4b43a61d0a0b39a9f82a1bb06126db76",
+      "logical_after_sha256": "fc656031ec8eea39519e647935f385ab4b43a61d0a0b39a9f82a1bb06126db76",
+      "logical_data_preserved": true,
+      "old_signed_csv_valid": true,
+      "tests_run": 45,
+      "failures": 0,
+      "errors": 0,
+      "test_breakdown": {
+        "aes": 17,
+        "hmac": 18,
+        "key_configuration": 5,
+        "existing_argon2_regression": 5
+      },
+      "users_and_original_row_counts_preserved": true
+    }
+  },
+  "fresh_install": {
+    "status": "passed",
+    "project": "notesapp-p1c3c4-check",
+    "tests_run": 45,
+    "failures": 0,
+    "errors": 0,
+    "http_checks": {
+      "http_teacher_login": true,
+      "exported_rows": 60,
+      "csv_comments_readable": true,
+      "hmac_in_downloaded_file": true,
+      "original_upload_status": 200,
+      "tampered_upload_status": 400
+    },
+    "code_sha256": {
+      "web/app.py": "42a66f1fcd33f696fd8159f0db4629e02c5c4a6bef026a139cbdd6a6b5c6e434",
+      "web/comment_crypto.py": "5a79775c36e6e6426ce43e8e19be9993426f943549b43e2d38d09de3fb63ac7f",
+      "web/csv_integrity.py": "e4ede8ad7249ac0091ae2220066cf8f3989948f90568e578c53fb07502012405",
+      "web/key_config.py": "234432625ea7e1878ab3b4a0a57a3c94e1d6246de1e297b0850b0b5c4ad94823",
+      "web/migrate_comments.py": "a316f164e7596306e81dc50dbd71aa13b82b756f02be404c339264502b18c2d8",
+      "web/requirements.txt": "b7f3e443172db282daba6a0c3ebdca4e9e26150717e3ebd0f7d3db4b0d93a071",
+      "web/runtime.py": "cca6fb9509004f3f57cbfa8879dcaa0176181eb9acf9e351b09e7d0865c6a0d1",
+      "web/static/style.css": "92bc94330fb22c316102586b876175a4c4b701e9b4a72063153a2aa53cc095b2",
+      "web/templates/admin.html": "f673c2f0e4245c21565099446ec858ddba75027fdf1bdedf0137483bfdcb4da3",
+      "web/templates/base.html": "5d76a3364e720f4597a7b8b212fd3dd6625cf8965c4e32e85cdf71082c6f0f99",
+      "web/templates/dashboard.html": "289df38fb4fa02c16c00d4487e48709c7d4d184581df2c1bae435b4eea600c54",
+      "web/templates/login.html": "d14e74b76d2b8db509160e2bc0bc61e3587e95f36243aa3eca332f404e7a8580",
+      "web/templates/teacher.html": "cad7a8233e60d835b2072b0678dd24465b9e78cc30fe30bb2877ade4d54d2717",
+      "web/templates/verify_export.html": "664e7d2d572edb674aa1bc036ddcd60ccc5fb26a92138e6935ae20b392118026",
+      "web/test_comment_encryption.py": "3646e9c48a03e35c11d0a7eed28989c5ca084dd266c4df2723f900f7c039fad2",
+      "web/test_csv_integrity.py": "e2dabd9a9932afc0ab484021d081255877ff27e85251defe48a1705bb3dbbca0",
+      "web/test_key_config.py": "4566cd69323b9e00bb5cbbe173245636c9c90b77acdd73eee0039fe5e9cf3433",
+      "web/test_password_storage.py": "90749d434faf06b949655ab6b7d7abb9a10f831f241c28edea25696b67091f69"
+    }
+  },
+  "administrative": {
+    "roster": {
+      "project": "P1",
+      "members": [
+        {
+          "student_id": "2023902046",
+          "name": "ZIQIAN YU"
+        },
+        {
+          "student_id": "2023905496",
+          "name": "HAOJIE SONG"
+        }
+      ]
+    }
+  }
+}

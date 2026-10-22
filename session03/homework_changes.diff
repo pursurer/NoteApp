@@ -1,0 +1,2 @@
+C3 is integrated into web/app.py. See web/comment_crypto.py, web/migrate_comments.py, and web/test_comment_encryption.py.
+Original course code for P1 evidence is in session03/project1/baseline/.

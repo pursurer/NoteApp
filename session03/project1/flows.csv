@@ -1,0 +1,22 @@
+ID,Sender,Receiver,Data,Boundary,Source
+1,Student browser,Flask,"Login fields",TB1,web/app.py:140-175
+2,Student browser,Flask,"Session or Bearer JWT; grade ID",TB1,web/app.py:184-224
+3,Flask,Student browser,"Session cookie; HTML; grade JSON",TB1,web/app.py:162-175 and 184-224
+4,Teacher browser,Flask,"Login; class reads; grade writes; CSV request",TB1,web/app.py:227-307
+5,Flask,Teacher browser,"Session; classes; grades; CSV",TB1,web/app.py:227-307
+6,Admin browser,Flask,"Login; user actions; Ping host",TB1,web/app.py:310-379
+7,Flask,Admin browser,"Session; users; classes; Ping output",TB1,web/app.py:310-379
+8,Flask,PostgreSQL,"SQL reads and writes; DB credentials at connection",TB2,web/app.py:48-54 and route queries
+9,PostgreSQL,Flask,"Identity; role; grades; comments; query results",TB2,web/app.py:48-54 and route fetches
+10,Flask,Local log file,"Login status; username; grade author; Ping host",Local storage; no separate enforced boundary,web/app.py:38-45 and log calls
+11,Flask,OS shell,"Ping command containing the host input",TB3,web/app.py:324-340
+12,OS shell,Flask,"Return status; stdout; stderr",TB3,web/app.py:332-341
+13,OS Ping process,Network target,"ICMP requests; DNS lookup if a host name is used",TB4,web/app.py:330-335; code-inferred network path
+14,Network target,OS Ping process,"ICMP or lookup responses",TB4,web/app.py:330-335; code-inferred network path
+15,Operator and image configuration,Flask and local files,"Startup settings; application image; demo config and backup",TB5,web/app.py:24-36; web/Dockerfile:13-23
+16,PostgreSQL,DB volume,"Persistent rows and database files; read and write",DB storage; same DB service trust,docker-compose.yml:9-11
+17,Web container processes,Docker daemon on the host,"Docker API requests through the mounted socket; not used by app code",TB6,docker-compose.yml:33-36; web/Dockerfile:24
+18,Docker daemon on the host,Web container processes,"Docker API responses; containers that the requests start",TB6,docker-compose.yml:33-36
+19,Web container processes,Host project tree,"Read and write host source; Compose files; db/init.sql; .git",TB6,docker-compose.yml:33-37
+20,Network DB client,PostgreSQL,"DB login with the published password; SQL",TB7,docker-compose.yml:5-7 and 11-12
+21,PostgreSQL,Network DB client,"Users with plaintext passwords; grades; comments; query results",TB7,docker-compose.yml:11-12; db/init.sql:6-12

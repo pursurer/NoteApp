@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Verify a CSV export</h1>
+  <p>Select an original NotesApp CSV export. The server checks its HMAC-SHA256.</p>
+  <p>The file is used only for this check. This check does not change any grades.</p>
+  {% if result == 'valid' %}
+  <p role="status"><strong>HMAC valid.</strong> The file has not changed since this server signed it.</p>
+  {% elif result == 'invalid' %}
+  <p role="alert"><strong>HMAC check failed.</strong> The file changed, its HMAC is missing, or it was signed with another key.</p>
+  {% elif result == 'missing' %}
+  <p role="alert">Select a CSV file.</p>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    <label>CSV file (maximum 10 MiB)
+      <input type="file" name="file" accept=".csv,text/csv" required>
+    </label>
+    <button type="submit">Verify HMAC</button>
+  </form>
+  <p><a href="{{ url_for('teacher') }}">Back to grades</a></p>
+</div>
+{% endblock %}

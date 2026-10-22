@@ -1,0 +1,24 @@
+{
+  "original": {
+    "blocks": 20736,
+    "unique_blocks": 101,
+    "duplicate_blocks": 20635
+  },
+  "ecb_visible_bytes": {
+    "blocks": 20736,
+    "unique_blocks": 101,
+    "duplicate_blocks": 20635
+  },
+  "gcm_visible_bytes": {
+    "blocks": 20736,
+    "unique_blocks": 20736,
+    "duplicate_blocks": 0
+  },
+  "ecb_round_trip": true,
+  "gcm_round_trip": true,
+  "gcm_tamper_rejected": true,
+  "raw_pixel_bytes": 331776,
+  "ecb_bytes_with_padding": 331792,
+  "gcm_bytes_with_tag": 331792,
+  "preview_note": "PNG previews display raw ciphertext as RGB pixels. Headers are not encrypted."
+}

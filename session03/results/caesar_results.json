@@ -1,0 +1,140 @@
+{
+  "method": "Minimum chi-squared score across 26 letter-frequency distributions",
+  "letter_count": 514,
+  "most_common_cipher_letter": "P",
+  "single_E_estimate": 11,
+  "best_shift": 11,
+  "candidates": [
+    {
+      "shift": 11,
+      "chi_squared": 116.44618044598462,
+      "plaintext": "The students use a small application to read their grades and comments. A teacher can enter a grade after each lesson. The application keeps the records in a database. The team must protect the private comments before a person can copy the database. A secret key changes the readable text into ciphertext. The same key changes the ciphertext back into readable text. Keep the key separate from the data. Use a new nonce for each message. Check the authentication tag before you use a comment. Reject a comment if the check fails. Encryption helps protect stored comments, but the application must also check who can read each record.\n"
+    },
+    {
+      "shift": 22,
+      "chi_squared": 1301.2184137622894,
+      "plaintext": "Iwt hijstcih jht p hbpaa peeaxrpixdc id gtps iwtxg vgpsth pcs rdbbtcih. P itprwtg rpc tcitg p vgpst puitg tprw athhdc. Iwt peeaxrpixdc ztteh iwt gtrdgsh xc p spipqpht. Iwt itpb bjhi egditri iwt egxkpit rdbbtcih qtudgt p etghdc rpc rden iwt spipqpht. P htrgti ztn rwpcvth iwt gtpspqat itmi xcid rxewtgitmi. Iwt hpbt ztn rwpcvth iwt rxewtgitmi qprz xcid gtpspqat itmi. Ztte iwt ztn htepgpit ugdb iwt spip. Jht p ctl cdcrt udg tprw bthhpvt. Rwtrz iwt pjiwtcixrpixdc ipv qtudgt ndj jht p rdbbtci. Gtytri p rdbbtci xu iwt rwtrz upxah. Tcrgneixdc wtaeh egditri hidgts rdbbtcih, qji iwt peeaxrpixdc bjhi pahd rwtrz lwd rpc gtps tprw gtrdgs.\n"
+    },
+    {
+      "shift": 17,
+      "chi_squared": 1810.6428365299855,
+      "plaintext": "Nby mnoxyhnm omy u mguff ujjfcwuncih ni lyux nbycl aluxym uhx wiggyhnm. U nyuwbyl wuh yhnyl u aluxy uznyl yuwb fymmih. Nby ujjfcwuncih eyyjm nby lywilxm ch u xunuvumy. Nby nyug gomn jlinywn nby jlcpuny wiggyhnm vyzily u jylmih wuh wijs nby xunuvumy. U mywlyn eys wbuhaym nby lyuxuvfy nyrn chni wcjbylnyrn. Nby mugy eys wbuhaym nby wcjbylnyrn vuwe chni lyuxuvfy nyrn. Eyyj nby eys myjuluny zlig nby xunu. Omy u hyq hihwy zil yuwb gymmuay. Wbywe nby uonbyhncwuncih nua vyzily sio omy u wiggyhn. Lydywn u wiggyhn cz nby wbywe zucfm. Yhwlsjncih byfjm jlinywn mnilyx wiggyhnm, von nby ujjfcwuncih gomn ufmi wbywe qbi wuh lyux yuwb lywilx.\n"
+    },
+    {
+      "shift": 24,
+      "chi_squared": 1959.3788780629625,
+      "plaintext": "Gur fghqragf hfr n fznyy nccyvpngvba gb ernq gurve tenqrf naq pbzzragf. N grnpure pna ragre n tenqr nsgre rnpu yrffba. Gur nccyvpngvba xrrcf gur erpbeqf va n qngnonfr. Gur grnz zhfg cebgrpg gur cevingr pbzzragf orsber n crefba pna pbcl gur qngnonfr. N frperg xrl punatrf gur ernqnoyr grkg vagb pvcuregrkg. Gur fnzr xrl punatrf gur pvcuregrkg onpx vagb ernqnoyr grkg. Xrrc gur xrl frcnengr sebz gur qngn. Hfr n arj abapr sbe rnpu zrffntr. Purpx gur nhguragvpngvba gnt orsber lbh hfr n pbzzrag. Erwrpg n pbzzrag vs gur purpx snvyf. Rapelcgvba urycf cebgrpg fgberq pbzzragf, ohg gur nccyvpngvba zhfg nyfb purpx jub pna ernq rnpu erpbeq.\n"
+    },
+    {
+      "shift": 10,
+      "chi_squared": 2257.207570983834,
+      "plaintext": "Uif tuvefout vtf b tnbmm bqqmjdbujpo up sfbe uifjs hsbeft boe dpnnfout. B ufbdifs dbo foufs b hsbef bgufs fbdi mfttpo. Uif bqqmjdbujpo lffqt uif sfdpset jo b ebubcbtf. Uif ufbn nvtu qspufdu uif qsjwbuf dpnnfout cfgpsf b qfstpo dbo dpqz uif ebubcbtf. B tfdsfu lfz dibohft uif sfbebcmf ufyu joup djqifsufyu. Uif tbnf lfz dibohft uif djqifsufyu cbdl joup sfbebcmf ufyu. Lffq uif lfz tfqbsbuf gspn uif ebub. Vtf b ofx opodf gps fbdi nfttbhf. Difdl uif bvuifoujdbujpo ubh cfgpsf zpv vtf b dpnnfou. Sfkfdu b dpnnfou jg uif difdl gbjmt. Fodszqujpo ifmqt qspufdu tupsfe dpnnfout, cvu uif bqqmjdbujpo nvtu bmtp difdl xip dbo sfbe fbdi sfdpse.\n"
+    },
+    {
+      "shift": 15,
+      "chi_squared": 2517.997017970847,
+      "plaintext": "Pda opqzajpo qoa w oiwhh wllheywpekj pk nawz pdaen cnwzao wjz ykiiajpo. W pawydan ywj ajpan w cnwza wbpan awyd haookj. Pda wllheywpekj gaalo pda nayknzo ej w zwpwxwoa. Pda pawi iqop lnkpayp pda lnerwpa ykiiajpo xabkna w lanokj ywj yklu pda zwpwxwoa. W oaynap gau ydwjcao pda nawzwxha patp ejpk yeldanpatp. Pda owia gau ydwjcao pda yeldanpatp xwyg ejpk nawzwxha patp. Gaal pda gau oalwnwpa bnki pda zwpw. Qoa w jas jkjya bkn awyd iaoowca. Ydayg pda wqpdajpeywpekj pwc xabkna ukq qoa w ykiiajp. Nafayp w ykiiajp eb pda ydayg bweho. Ajynulpekj dahlo lnkpayp opknaz ykiiajpo, xqp pda wllheywpekj iqop whok ydayg sdk ywj nawz awyd nayknz.\n"
+    },
+    {
+      "shift": 8,
+      "chi_squared": 2607.2825430946746,
+      "plaintext": "Wkh vwxghqwv xvh d vpdoo dssolfdwlrq wr uhdg wkhlu judghv dqg frpphqwv. D whdfkhu fdq hqwhu d judgh diwhu hdfk ohvvrq. Wkh dssolfdwlrq nhhsv wkh uhfrugv lq d gdwdedvh. Wkh whdp pxvw surwhfw wkh sulydwh frpphqwv ehiruh d shuvrq fdq frsb wkh gdwdedvh. D vhfuhw nhb fkdqjhv wkh uhdgdeoh whaw lqwr flskhuwhaw. Wkh vdph nhb fkdqjhv wkh flskhuwhaw edfn lqwr uhdgdeoh whaw. Nhhs wkh nhb vhsdudwh iurp wkh gdwd. Xvh d qhz qrqfh iru hdfk phvvdjh. Fkhfn wkh dxwkhqwlfdwlrq wdj ehiruh brx xvh d frpphqw. Uhmhfw d frpphqw li wkh fkhfn idlov. Hqfubswlrq khosv surwhfw vwruhg frpphqwv, exw wkh dssolfdwlrq pxvw dovr fkhfn zkr fdq uhdg hdfk uhfrug.\n"
+    },
+    {
+      "shift": 1,
+      "chi_squared": 3019.704355261943,
+      "plaintext": "Dro cdenoxdc eco k cwkvv kzzvsmkdsyx dy bokn drosb qbknoc kxn mywwoxdc. K dokmrob mkx oxdob k qbkno kpdob okmr voccyx. Dro kzzvsmkdsyx uoozc dro bomybnc sx k nkdklkco. Dro dokw wecd zbydomd dro zbsfkdo mywwoxdc lopybo k zobcyx mkx myzi dro nkdklkco. K combod uoi mrkxqoc dro boknklvo dohd sxdy mszrobdohd. Dro ckwo uoi mrkxqoc dro mszrobdohd lkmu sxdy boknklvo dohd. Uooz dro uoi cozkbkdo pbyw dro nkdk. Eco k xog xyxmo pyb okmr wocckqo. Mromu dro kedroxdsmkdsyx dkq lopybo iye eco k mywwoxd. Botomd k mywwoxd sp dro mromu pksvc. Oxmbizdsyx rovzc zbydomd cdybon mywwoxdc, led dro kzzvsmkdsyx wecd kvcy mromu gry mkx bokn okmr bomybn.\n"
+    },
+    {
+      "shift": 13,
+      "chi_squared": 3043.763656541331,
+      "plaintext": "Rfc qrsbclrq sqc y qkyjj ynnjgayrgml rm pcyb rfcgp epybcq ylb amkkclrq. Y rcyafcp ayl clrcp y epybc ydrcp cyaf jcqqml. Rfc ynnjgayrgml iccnq rfc pcampbq gl y byryzyqc. Rfc rcyk ksqr npmrcar rfc npgtyrc amkkclrq zcdmpc y ncpqml ayl amnw rfc byryzyqc. Y qcapcr icw afylecq rfc pcybyzjc rcvr glrm agnfcprcvr. Rfc qykc icw afylecq rfc agnfcprcvr zyai glrm pcybyzjc rcvr. Iccn rfc icw qcnypyrc dpmk rfc byry. Sqc y lcu lmlac dmp cyaf kcqqyec. Afcai rfc ysrfclrgayrgml rye zcdmpc wms sqc y amkkclr. Pchcar y amkkclr gd rfc afcai dygjq. Clapwnrgml fcjnq npmrcar qrmpcb amkkclrq, zsr rfc ynnjgayrgml ksqr yjqm afcai ufm ayl pcyb cyaf pcampb.\n"
+    },
+    {
+      "shift": 23,
+      "chi_squared": 3455.3078791251996,
+      "plaintext": "Hvs ghirsbhg igs o gaozz oddzwqohwcb hc fsor hvswf uforsg obr qcaasbhg. O hsoqvsf qob sbhsf o ufors othsf soqv zsggcb. Hvs oddzwqohwcb yssdg hvs fsqcfrg wb o rohopogs. Hvs hsoa aigh dfchsqh hvs dfwjohs qcaasbhg pstcfs o dsfgcb qob qcdm hvs rohopogs. O gsqfsh ysm qvobusg hvs fsoropzs hslh wbhc qwdvsfhslh. Hvs goas ysm qvobusg hvs qwdvsfhslh poqy wbhc fsoropzs hslh. Yssd hvs ysm gsdofohs tfca hvs roho. Igs o bsk bcbqs tcf soqv asggous. Qvsqy hvs oihvsbhwqohwcb hou pstcfs mci igs o qcaasbh. Fsxsqh o qcaasbh wt hvs qvsqy towzg. Sbqfmdhwcb vszdg dfchsqh ghcfsr qcaasbhg, pih hvs oddzwqohwcb aigh ozgc qvsqy kvc qob fsor soqv fsqcfr.\n"
+    },
+    {
+      "shift": 0,
+      "chi_squared": 3483.2408948462194,
+      "plaintext": "Esp defopyed fdp l dxlww laawtnletzy ez cplo esptc rclopd lyo nzxxpyed. L eplnspc nly pyepc l rclop lqepc plns wpddzy. Esp laawtnletzy vppad esp cpnzcod ty l olelmldp. Esp eplx xfde aczepne esp actglep nzxxpyed mpqzcp l apcdzy nly nzaj esp olelmldp. L dpncpe vpj nslyrpd esp cplolmwp epie tyez ntaspcepie. Esp dlxp vpj nslyrpd esp ntaspcepie mlnv tyez cplolmwp epie. Vppa esp vpj dpalclep qczx esp olel. Fdp l yph yzynp qzc plns xpddlrp. Nspnv esp lfespyetnletzy elr mpqzcp jzf fdp l nzxxpye. Cpupne l nzxxpye tq esp nspnv qltwd. Pyncjaetzy spwad aczepne dezcpo nzxxpyed, mfe esp laawtnletzy xfde lwdz nspnv hsz nly cplo plns cpnzco.\n"
+    },
+    {
+      "shift": 9,
+      "chi_squared": 4300.330151230545,
+      "plaintext": "Vjg uvwfgpvu wug c uocnn crrnkecvkqp vq tgcf vjgkt itcfgu cpf eqoogpvu. C vgcejgt ecp gpvgt c itcfg chvgt gcej nguuqp. Vjg crrnkecvkqp mggru vjg tgeqtfu kp c fcvcdcug. Vjg vgco owuv rtqvgev vjg rtkxcvg eqoogpvu dghqtg c rgtuqp ecp eqra vjg fcvcdcug. C ugetgv mga ejcpigu vjg tgcfcdng vgzv kpvq ekrjgtvgzv. Vjg ucog mga ejcpigu vjg ekrjgtvgzv dcem kpvq tgcfcdng vgzv. Mggr vjg mga ugrctcvg htqo vjg fcvc. Wug c pgy pqpeg hqt gcej oguucig. Ejgem vjg cwvjgpvkecvkqp vci dghqtg aqw wug c eqoogpv. Tglgev c eqoogpv kh vjg ejgem hcknu. Gpetarvkqp jgnru rtqvgev uvqtgf eqoogpvu, dwv vjg crrnkecvkqp owuv cnuq ejgem yjq ecp tgcf gcej tgeqtf.\n"
+    },
+    {
+      "shift": 19,
+      "chi_squared": 4348.656305782217,
+      "plaintext": "Lzw klmvwflk mkw s kesdd shhdauslagf lg jwsv lzwaj yjsvwk sfv ugeewflk. S lwsuzwj usf wflwj s yjsvw sxlwj wsuz dwkkgf. Lzw shhdauslagf cwwhk lzw jwugjvk af s vslstskw. Lzw lwse emkl hjglwul lzw hjanslw ugeewflk twxgjw s hwjkgf usf ughq lzw vslstskw. S kwujwl cwq uzsfywk lzw jwsvstdw lwpl aflg uahzwjlwpl. Lzw ksew cwq uzsfywk lzw uahzwjlwpl tsuc aflg jwsvstdw lwpl. Cwwh lzw cwq kwhsjslw xjge lzw vsls. Mkw s fwo fgfuw xgj wsuz ewkksyw. Uzwuc lzw smlzwflauslagf lsy twxgjw qgm mkw s ugeewfl. Jwbwul s ugeewfl ax lzw uzwuc xsadk. Wfujqhlagf zwdhk hjglwul klgjwv ugeewflk, tml lzw shhdauslagf emkl sdkg uzwuc ozg usf jwsv wsuz jwugjv.\n"
+    },
+    {
+      "shift": 20,
+      "chi_squared": 4351.376150302905,
+      "plaintext": "Kyv jkluvekj ljv r jdrcc rggcztrkzfe kf ivru kyvzi xiruvj reu tfddvekj. R kvrtyvi tre vekvi r xiruv rwkvi vrty cvjjfe. Kyv rggcztrkzfe bvvgj kyv ivtfiuj ze r urkrsrjv. Kyv kvrd dljk gifkvtk kyv gizmrkv tfddvekj svwfiv r gvijfe tre tfgp kyv urkrsrjv. R jvtivk bvp tyrexvj kyv ivrurscv kvok zekf tzgyvikvok. Kyv jrdv bvp tyrexvj kyv tzgyvikvok srtb zekf ivrurscv kvok. Bvvg kyv bvp jvgrirkv wifd kyv urkr. Ljv r evn efetv wfi vrty dvjjrxv. Tyvtb kyv rlkyvekztrkzfe krx svwfiv pfl ljv r tfddvek. Ivavtk r tfddvek zw kyv tyvtb wrzcj. Vetipgkzfe yvcgj gifkvtk jkfivu tfddvekj, slk kyv rggcztrkzfe dljk rcjf tyvtb nyf tre ivru vrty ivtfiu.\n"
+    },
+    {
+      "shift": 4,
+      "chi_squared": 4520.004361060371,
+      "plaintext": "Aol zabkluaz bzl h zthss hwwspjhapvu av ylhk aolpy nyhklz huk jvttluaz. H alhjoly jhu lualy h nyhkl hmaly lhjo slzzvu. Aol hwwspjhapvu rllwz aol yljvykz pu h khahihzl. Aol alht tbza wyvalja aol wypchal jvttluaz ilmvyl h wlyzvu jhu jvwf aol khahihzl. H zljyla rlf johunlz aol ylhkhisl alea puav jpwolyalea. Aol zhtl rlf johunlz aol jpwolyalea ihjr puav ylhkhisl alea. Rllw aol rlf zlwhyhal myvt aol khah. Bzl h uld uvujl mvy lhjo tlzzhnl. Joljr aol hbaoluapjhapvu ahn ilmvyl fvb bzl h jvttlua. Ylqlja h jvttlua pm aol joljr mhpsz. Lujyfwapvu olswz wyvalja zavylk jvttluaz, iba aol hwwspjhapvu tbza hszv joljr dov jhu ylhk lhjo yljvyk.\n"
+    },
+    {
+      "shift": 3,
+      "chi_squared": 4734.283639516798,
+      "plaintext": "Bpm abclmvba cam i auitt ixxtqkibqwv bw zmil bpmqz ozilma ivl kwuumvba. I bmikpmz kiv mvbmz i ozilm inbmz mikp tmaawv. Bpm ixxtqkibqwv smmxa bpm zmkwzla qv i libijiam. Bpm bmiu ucab xzwbmkb bpm xzqdibm kwuumvba jmnwzm i xmzawv kiv kwxg bpm libijiam. I amkzmb smg kpivoma bpm zmilijtm bmfb qvbw kqxpmzbmfb. Bpm aium smg kpivoma bpm kqxpmzbmfb jiks qvbw zmilijtm bmfb. Smmx bpm smg amxizibm nzwu bpm libi. Cam i vme vwvkm nwz mikp umaaiom. Kpmks bpm icbpmvbqkibqwv bio jmnwzm gwc cam i kwuumvb. Zmrmkb i kwuumvb qn bpm kpmks niqta. Mvkzgxbqwv pmtxa xzwbmkb abwzml kwuumvba, jcb bpm ixxtqkibqwv ucab itaw kpmks epw kiv zmil mikp zmkwzl.\n"
+    },
+    {
+      "shift": 7,
+      "chi_squared": 5609.472572986788,
+      "plaintext": "Xli wxyhirxw ywi e wqepp ettpmgexmsr xs vieh xlimv kvehiw erh gsqqirxw. E xiegliv ger irxiv e kvehi ejxiv iegl piwwsr. Xli ettpmgexmsr oiitw xli vigsvhw mr e hexefewi. Xli xieq qywx tvsxigx xli tvmzexi gsqqirxw fijsvi e tivwsr ger gstc xli hexefewi. E wigvix oic glerkiw xli viehefpi xibx mrxs gmtlivxibx. Xli weqi oic glerkiw xli gmtlivxibx fego mrxs viehefpi xibx. Oiit xli oic witevexi jvsq xli hexe. Ywi e ria rsrgi jsv iegl qiwweki. Gligo xli eyxlirxmgexmsr xek fijsvi csy ywi e gsqqirx. Vinigx e gsqqirx mj xli gligo jempw. Irgvctxmsr liptw tvsxigx wxsvih gsqqirxw, fyx xli ettpmgexmsr qywx epws gligo als ger vieh iegl vigsvh.\n"
+    },
+    {
+      "shift": 2,
+      "chi_squared": 7034.147503422814,
+      "plaintext": "Cqn bcdmnwcb dbn j bvjuu jyyurljcrxw cx anjm cqnra pajmnb jwm lxvvnwcb. J cnjlqna ljw nwcna j pajmn jocna njlq unbbxw. Cqn jyyurljcrxw tnnyb cqn anlxamb rw j mjcjkjbn. Cqn cnjv vdbc yaxcnlc cqn yarejcn lxvvnwcb knoxan j ynabxw ljw lxyh cqn mjcjkjbn. J bnlanc tnh lqjwpnb cqn anjmjkun cngc rwcx lryqnacngc. Cqn bjvn tnh lqjwpnb cqn lryqnacngc kjlt rwcx anjmjkun cngc. Tnny cqn tnh bnyjajcn oaxv cqn mjcj. Dbn j wnf wxwln oxa njlq vnbbjpn. Lqnlt cqn jdcqnwcrljcrxw cjp knoxan hxd dbn j lxvvnwc. Ansnlc j lxvvnwc ro cqn lqnlt ojrub. Nwlahycrxw qnuyb yaxcnlc bcxanm lxvvnwcb, kdc cqn jyyurljcrxw vdbc jubx lqnlt fqx ljw anjm njlq anlxam.\n"
+    },
+    {
+      "shift": 12,
+      "chi_squared": 10221.282171859466,
+      "plaintext": "Sgd rstcdmsr trd z rlzkk zookhbzshnm sn qdzc sgdhq fqzcdr zmc bnlldmsr. Z sdzbgdq bzm dmsdq z fqzcd zesdq dzbg kdrrnm. Sgd zookhbzshnm jddor sgd qdbnqcr hm z czszazrd. Sgd sdzl ltrs oqnsdbs sgd oqhuzsd bnlldmsr adenqd z odqrnm bzm bnox sgd czszazrd. Z rdbqds jdx bgzmfdr sgd qdzczakd sdws hmsn bhogdqsdws. Sgd rzld jdx bgzmfdr sgd bhogdqsdws azbj hmsn qdzczakd sdws. Jddo sgd jdx rdozqzsd eqnl sgd czsz. Trd z mdv mnmbd enq dzbg ldrrzfd. Bgdbj sgd ztsgdmshbzshnm szf adenqd xnt trd z bnlldms. Qdidbs z bnlldms he sgd bgdbj ezhkr. Dmbqxoshnm gdkor oqnsdbs rsnqdc bnlldmsr, ats sgd zookhbzshnm ltrs zkrn bgdbj vgn bzm qdzc dzbg qdbnqc.\n"
+    },
+    {
+      "shift": 18,
+      "chi_squared": 10534.05115937162,
+      "plaintext": "Max lmnwxgml nlx t lftee tiiebvtmbhg mh kxtw maxbk zktwxl tgw vhffxgml. T mxtvaxk vtg xgmxk t zktwx tymxk xtva exllhg. Max tiiebvtmbhg dxxil max kxvhkwl bg t wtmtutlx. Max mxtf fnlm ikhmxvm max ikbotmx vhffxgml uxyhkx t ixklhg vtg vhir max wtmtutlx. T lxvkxm dxr vatgzxl max kxtwtuex mxqm bgmh vbiaxkmxqm. Max ltfx dxr vatgzxl max vbiaxkmxqm utvd bgmh kxtwtuex mxqm. Dxxi max dxr lxitktmx ykhf max wtmt. Nlx t gxp ghgvx yhk xtva fxlltzx. Vaxvd max tnmaxgmbvtmbhg mtz uxyhkx rhn nlx t vhffxgm. Kxcxvm t vhffxgm by max vaxvd ytbel. Xgvkrimbhg axeil ikhmxvm lmhkxw vhffxgml, unm max tiiebvtmbhg fnlm telh vaxvd pah vtg kxtw xtva kxvhkw.\n"
+    },
+    {
+      "shift": 6,
+      "chi_squared": 11657.367256789124,
+      "plaintext": "Ymj xyzijsyx zxj f xrfqq fuuqnhfynts yt wjfi ymjnw lwfijx fsi htrrjsyx. F yjfhmjw hfs jsyjw f lwfij fkyjw jfhm qjxxts. Ymj fuuqnhfynts pjjux ymj wjhtwix ns f ifyfgfxj. Ymj yjfr rzxy uwtyjhy ymj uwnafyj htrrjsyx gjktwj f ujwxts hfs htud ymj ifyfgfxj. F xjhwjy pjd hmfsljx ymj wjfifgqj yjcy nsyt hnumjwyjcy. Ymj xfrj pjd hmfsljx ymj hnumjwyjcy gfhp nsyt wjfifgqj yjcy. Pjju ymj pjd xjufwfyj kwtr ymj ifyf. Zxj f sjb stshj ktw jfhm rjxxflj. Hmjhp ymj fzymjsynhfynts yfl gjktwj dtz zxj f htrrjsy. Wjojhy f htrrjsy nk ymj hmjhp kfnqx. Jshwduynts mjqux uwtyjhy xytwji htrrjsyx, gzy ymj fuuqnhfynts rzxy fqxt hmjhp bmt hfs wjfi jfhm wjhtwi.\n"
+    },
+    {
+      "shift": 21,
+      "chi_squared": 12165.919273958918,
+      "plaintext": "Jxu ijktudji kiu q icqbb qffbysqjyed je huqt jxuyh whqtui qdt seccudji. Q juqsxuh sqd udjuh q whqtu qvjuh uqsx buiied. Jxu qffbysqjyed auufi jxu husehti yd q tqjqrqiu. Jxu juqc ckij fhejusj jxu fhylqju seccudji ruvehu q fuhied sqd sefo jxu tqjqrqiu. Q iushuj auo sxqdwui jxu huqtqrbu junj ydje syfxuhjunj. Jxu iqcu auo sxqdwui jxu syfxuhjunj rqsa ydje huqtqrbu junj. Auuf jxu auo iufqhqju vhec jxu tqjq. Kiu q dum dedsu veh uqsx cuiiqwu. Sxusa jxu qkjxudjysqjyed jqw ruvehu oek kiu q seccudj. Huzusj q seccudj yv jxu sxusa vqybi. Udshofjyed xubfi fhejusj ijehut seccudji, rkj jxu qffbysqjyed ckij qbie sxusa mxe sqd huqt uqsx huseht.\n"
+    },
+    {
+      "shift": 5,
+      "chi_squared": 12978.181773362208,
+      "plaintext": "Znk yzajktzy ayk g ysgrr gvvroigzout zu xkgj znkox mxgjky gtj iussktzy. G zkginkx igt ktzkx g mxgjk glzkx kgin rkyyut. Znk gvvroigzout qkkvy znk xkiuxjy ot g jgzghgyk. Znk zkgs sayz vxuzkiz znk vxobgzk iussktzy hkluxk g vkxyut igt iuve znk jgzghgyk. G ykixkz qke ingtmky znk xkgjghrk zkdz otzu iovnkxzkdz. Znk ygsk qke ingtmky znk iovnkxzkdz hgiq otzu xkgjghrk zkdz. Qkkv znk qke ykvgxgzk lxus znk jgzg. Ayk g tkc tutik lux kgin skyygmk. Inkiq znk gaznktzoigzout zgm hkluxk eua ayk g iussktz. Xkpkiz g iussktz ol znk inkiq lgory. Ktixevzout nkrvy vxuzkiz yzuxkj iussktzy, haz znk gvvroigzout sayz gryu inkiq cnu igt xkgj kgin xkiuxj.\n"
+    },
+    {
+      "shift": 14,
+      "chi_squared": 15995.06763233319,
+      "plaintext": "Qeb pqrabkqp rpb x pjxii xmmifzxqflk ql obxa qebfo doxabp xka zljjbkqp. X qbxzebo zxk bkqbo x doxab xcqbo bxze ibpplk. Qeb xmmifzxqflk hbbmp qeb obzloap fk x axqxyxpb. Qeb qbxj jrpq molqbzq qeb mofsxqb zljjbkqp ybclob x mboplk zxk zlmv qeb axqxyxpb. X pbzobq hbv zexkdbp qeb obxaxyib qbuq fkql zfmeboqbuq. Qeb pxjb hbv zexkdbp qeb zfmeboqbuq yxzh fkql obxaxyib qbuq. Hbbm qeb hbv pbmxoxqb colj qeb axqx. Rpb x kbt klkzb clo bxze jbppxdb. Zebzh qeb xrqebkqfzxqflk qxd ybclob vlr rpb x zljjbkq. Obgbzq x zljjbkq fc qeb zebzh cxfip. Bkzovmqflk ebimp molqbzq pqloba zljjbkqp, yrq qeb xmmifzxqflk jrpq xipl zebzh tel zxk obxa bxze obzloa.\n"
+    },
+    {
+      "shift": 25,
+      "chi_squared": 18049.922336030264,
+      "plaintext": "Ftq efgpqzfe geq m eymxx mbbxuomfuaz fa dqmp ftqud sdmpqe mzp oayyqzfe. M fqmotqd omz qzfqd m sdmpq mrfqd qmot xqeeaz. Ftq mbbxuomfuaz wqqbe ftq dqoadpe uz m pmfmnmeq. Ftq fqmy ygef bdafqof ftq bduhmfq oayyqzfe nqradq m bqdeaz omz oabk ftq pmfmnmeq. M eqodqf wqk otmzsqe ftq dqmpmnxq fqjf uzfa oubtqdfqjf. Ftq emyq wqk otmzsqe ftq oubtqdfqjf nmow uzfa dqmpmnxq fqjf. Wqqb ftq wqk eqbmdmfq rday ftq pmfm. Geq m zqi zazoq rad qmot yqeemsq. Otqow ftq mgftqzfuomfuaz fms nqradq kag geq m oayyqzf. Dqvqof m oayyqzf ur ftq otqow rmuxe. Qzodkbfuaz tqxbe bdafqof efadqp oayyqzfe, ngf ftq mbbxuomfuaz ygef mxea otqow ita omz dqmp qmot dqoadp.\n"
+    },
+    {
+      "shift": 16,
+      "chi_squared": 23172.155085441853,
+      "plaintext": "Ocz nopyzion pnz v nhvgg vkkgdxvodji oj mzvy oczdm bmvyzn viy xjhhzion. V ozvxczm xvi ziozm v bmvyz vaozm zvxc gznnji. Ocz vkkgdxvodji fzzkn ocz mzxjmyn di v yvovwvnz. Ocz ozvh hpno kmjozxo ocz kmdqvoz xjhhzion wzajmz v kzmnji xvi xjkt ocz yvovwvnz. V nzxmzo fzt xcvibzn ocz mzvyvwgz ozso dioj xdkczmozso. Ocz nvhz fzt xcvibzn ocz xdkczmozso wvxf dioj mzvyvwgz ozso. Fzzk ocz fzt nzkvmvoz amjh ocz yvov. Pnz v izr ijixz ajm zvxc hznnvbz. Xczxf ocz vpocziodxvodji ovb wzajmz tjp pnz v xjhhzio. Mzezxo v xjhhzio da ocz xczxf avdgn. Zixmtkodji czgkn kmjozxo nojmzy xjhhzion, wpo ocz vkkgdxvodji hpno vgnj xczxf rcj xvi mzvy zvxc mzxjmy.\n"
+    }
+  ],
+  "limitation": "Short or unusual English messages can produce the wrong rank."
+}

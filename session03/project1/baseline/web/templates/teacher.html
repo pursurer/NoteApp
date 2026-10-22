@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Classes</h1>
+  <ul class="classes">
+    {% for c in classes %}
+    <li>{{ c.name }}
+      <a class="small" href="{{ url_for('export_csv') }}?class_id={{ c.id }}">export CSV</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Add / update a grade</h2>
+  <form method="post" action="{{ url_for('grades') }}">
+    <label>Note id (leave empty to create)
+      <input type="text" name="note_id">
+    </label>
+    <label>Student
+      <select name="student_id">
+        {% for s in students %}<option value="{{ s.id }}">{{ s.username }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Class
+      <select name="class_id">
+        {% for c in classes %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Grade <input type="text" name="grade"></label>
+    <label>Comment <textarea name="comment" rows="2"></textarea></label>
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>All grades</h2>
+  <table>
+    <thead><tr><th>id</th><th>Student</th><th>Class</th><th>Grade</th><th>Comment</th></tr></thead>
+    <tbody>
+      {% for n in notes %}
+      <tr>
+        <td>{{ n.id }}</td>
+        <td>{{ n.student }}</td>
+        <td>{{ n.class_name }}</td>
+        <td>{{ n.grade }}</td>
+        <td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

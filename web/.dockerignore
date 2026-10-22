@@ -1,0 +1,6 @@
+instance/
+*.key
+.env*
+__pycache__/
+.venv/
+venv/

@@ -1,0 +1,10 @@
+﻿ID,Sender,Receiver,Data,Boundary
+1,Student,Flask,"POST /login (username, password)",TB1
+2,Student,Flask,Request grades (session / Bearer JWT),TB1
+3,Flask,Student,Session / grades,TB1
+4,Teacher,Flask,Login / read or edit grades,TB1
+5,Flask,Teacher,Session / classes / grades,TB1
+6,Admin,Flask,Login / manage users,TB1
+7,Flask,Admin,Session / users / classes,TB1
+8,Flask,PostgreSQL,SQL read / write,TB2
+9,PostgreSQL,Flask,Query results / command completion,TB2

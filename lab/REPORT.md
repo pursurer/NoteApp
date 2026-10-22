@@ -1,0 +1,42 @@
+# NotesApp - Session 02 lab
+
+Group members: fill in before submission.
+
+Fork: https://github.com/pursurer/NoteApp. Baseline: `8d5916436b7516547898b17fc856a54807b3638f`.
+
+## Numbered data-flow diagram
+
+The diagram follows course slide 34: three browsers, a larger Flask block, PostgreSQL, TB1/TB2 and a short flow list. Each of its nine numbered arrows maps to one STRIDE row.
+Teacher/Admin traffic and DB operations are grouped to keep the diagram readable. Auxiliary health, static assets, audit storage, CSV details and Admin Ping subprocess flows are outside this compact drawing.
+
+Open NotesApp-data-flow.excalidraw in https://excalidraw.com/. It includes the original diagram, six STRIDE questions and the complete table below it. PNGs are exported from that website.
+
+## Flow list
+
+| ID | Sender -> receiver | Data | Boundary |
+|---|---|---|---|
+| 1 | Student -> Flask | POST /login (username, password) | TB1 |
+| 2 | Student -> Flask | Request grades (session / Bearer JWT) | TB1 |
+| 3 | Flask -> Student | Session / grades | TB1 |
+| 4 | Teacher -> Flask | Login / read or edit grades | TB1 |
+| 5 | Flask -> Teacher | Session / classes / grades | TB1 |
+| 6 | Admin -> Flask | Login / manage users | TB1 |
+| 7 | Flask -> Admin | Session / users / classes | TB1 |
+| 8 | Flask -> PostgreSQL | SQL read / write | TB2 |
+| 9 | PostgreSQL -> Flask | Query results / command completion | TB2 |
+
+## First STRIDE table
+
+STRIDE.csv contains nine rows. S: Spoofing; T: Tampering; R: Repudiation; I: Information disclosure; D: Denial of service; E: Elevation of privilege. Entries are potential threats supported by inspected source, not successful exploit results.
+The D column lists availability scenarios to assess; no load tests or resource-impact measurements were performed. Flow 8 database grants still need verification. Legitimate admin user creation alone is not privilege escalation.
+The table has the requested ten columns: ID, Sender -> receiver, Data, Boundary, S, T, R, I, D, E. NotesApp-STRIDE.excalidraw and NotesApp-STRIDE-table.png are exports of the STRIDE section; EXPLANATION.zh-CN.md explains the complete diagram in Chinese.
+STRIDE definitions: https://learn.microsoft.com/en-us/biztalk/core/identifying-potential-threats .
+
+## Observation and source
+
+41 normal HTTP requests covered anonymous, student, teacher and admin states. The student read their own seeded grade, the teacher page showed grade IDs, and the database digest was unchanged.
+The grade, user-management and Ping POST forms were inspected but not submitted. No attack payloads or load tests were used. DB flows were reconstructed from code, not packet capture.
+
+Evidence: observations.json, web/app.py, web/templates, db/init.sql, docker-compose.yml. PostgreSQL SHOW ssl returned off. The local compose.lab.yml binds localhost:8080, hides the DB host port and removes web host mounts.
+
+Before submission: add group members and review the nine flow/STRIDE pairs as a group. Keep both for Project 1.
