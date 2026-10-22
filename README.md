@@ -107,3 +107,32 @@ docker compose stop
 Keep `pgdata`, `commentkey`, and `csvhmackey`. Deleting keys makes existing
 encrypted comments unreadable or invalidates older signed exports.
 The app retains course vulnerabilities outside the C3/C4 changes; see the P1 baseline risk analysis.
+
+## Updating your fork
+
+The course repository is sometimes updated. Your fork does **not** update by itself.
+To pull the latest changes into your fork:
+
+**Easiest (GitHub website):** open your fork, and if it says *"This branch is behind
+KristenPire/NoteApp"*, click **Sync fork → Update branch**. Then, in your local clone:
+
+```
+git pull
+```
+
+**Command line (keeps your own commits):**
+
+```
+git remote add upstream https://github.com/KristenPire/NoteApp.git   # once
+git fetch upstream
+git merge upstream/main
+git push
+```
+
+Then **rebuild**, because the app code is baked into the Docker image:
+
+```
+docker compose up --build
+```
+
+A plain `docker compose up` would keep running the old image.
