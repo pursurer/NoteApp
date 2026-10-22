@@ -1,9 +1,0 @@
-{
-  "width": 384,
-  "height": 288,
-  "pixel_mode": "RGB",
-  "nonce_hex": "8339761932585813456e70fa",
-  "aad_ascii": "Session03:RGB:384x288:v1",
-  "tag_bytes": 16,
-  "key": "Ephemeral. Used for verification, then discarded. Never exported."
-}

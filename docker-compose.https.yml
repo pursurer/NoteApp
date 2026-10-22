@@ -1,5 +1,5 @@
-# Keep the existing local containment overlay, then apply HTTPS last:
-# docker compose -p notesapp-lab -f docker-compose.yml -f compose.lab.yml -f docker-compose.https.yml up -d --no-build
+# Class 5 Lab 1: put nginx with TLS in front of the app.
+# docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
 services:
   web:
     ports: !reset []

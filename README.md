@@ -6,83 +6,63 @@ A small grades application used throughout the Computer Security course. Teacher
 record grades and comments for their classes, students read their own grades, and an
 admin manages users and classes.
 
-Class 4 adds HMAC-SHA256 to CSV exports and a teacher-only verification page.
-See [the Class 4 report](session04/REPORT.md) for the design and the checks.
+## Coursework
 
-Class 5 HTTP capture, HTTPS and password storage: the two lab reports are in the section below.
+Each class changes the app in place (`web/`, `docker-compose.yml`, and the files the
+lab names, such as `nginx/` and `crack/`) and adds its report to [`reports/`](reports/).
+The state handed in on 22 October 2026 is tagged `submitted-2026-10-22`.
 
-## Class 5 — HTTPS & password storage audits
+| Class | Group | Report | Change in the app |
+|---|---|---|---|
+| Session 2 — threat model | ZIQIAN YU (2023902046); HAOJIE SONG (2023905496) | [Data flows and STRIDE](reports/class2-threat-model.md) | — |
+| Project 1 — risk analysis | ZIQIAN YU (2023902046); HAOJIE SONG (2023905496) | [Report](reports/project1-risk-analysis.md) ([PDF](reports/project1-risk-analysis.pdf)) · [3-minute script](reports/project1-presentation-3min.md) | — (analyses the original app, teacher commit `8d59164`) |
+| Class 3 — symmetric encryption | ZIQIAN YU (2023902046); HAOJIE SONG (2023905496) | [Caesar, ECB vs GCM, comment encryption](reports/class3-encryption.md) | AES-256-GCM on the comment column |
+| Class 4 — integrity | ZIQIAN YU (2023902046); HAOJIE SONG (2023905496) | [Signed CSV export](reports/class4-integrity.md) | HMAC-SHA256 on `/export.csv`, teacher page `/verify-export` |
+| Class 5 — HTTPS and password storage | HAOJIE SONG (2023905496); ANGRAN YU (2023900899) | [Lab 1 transit audit](reports/class5-lab1-transit-audit.md) ([PDF](reports/class5-lab1-transit-audit.pdf)) · [Lab 2 password audit](reports/class5-lab2-password-audit.md) ([PDF](reports/class5-lab2-password-audit.pdf)) | nginx with TLS (`nginx/`, `docker-compose.https.yml`); Argon2 with upgrade on login; MD5 cracking in `crack/` |
 
-- Pair: **HAOJIE SONG (2023905496)**; **ANGRAN YU (2023900899)**.
-- [Lab 1 — Traffic-in-transit audit](session05/submission/Lab1-Transit-Audit.md) ([PDF](session05/submission/Class05-Lab1-Transit-Audit.pdf)): login readable over plain HTTP, HTTPS with nginx and a self-signed certificate, re-capture under HTTPS, certificate trust verdict.
-- [Lab 2 — Password storage audit](session05/submission/Lab2-Password-Audit.md) ([PDF](session05/submission/Class05-Lab2-Password-Audit.pdf)): unsalted-MD5 crack, Argon2 upgrade-on-login, measured MD5 vs Argon2 guessing speed.
-- Evidence and scripts: [session05/https](session05/https/) and [session05/passwords](session05/passwords/).
-
-After the lab, the app runs again on plain HTTP (`http://localhost:8080`), as the lab's cleanup step asks. Passwords stay stored with Argon2: each legacy account upgrades at its next successful login.
-
-## P1, C3 and C4 delivery
-
-- P1, C3 and C4 group: **ZIQIAN YU (2023902046)**; **HAOJIE SONG (2023905496)**.
-- [P1 risk report](session03/project1/REPORT.md) ([PDF](session03/project1/Session03-Project1-Risk-Analysis.pdf)): diagram with TB1-TB7 and 21 flows, six STRIDE categories, 18 scored risks, and the top three fixes.
-- [Three-minute speaking script](session03/project1/PRESENTATION-3min.md).
-- [Session 2 lab](lab/REPORT.md): the first data-flow diagram and STRIDE table that P1 builds on.
-- [C3 report](session03/REPORT.md): Caesar break, AES-ECB vs AES-GCM images, and AES-256-GCM encryption of the comment column.
-- [C4 report](session04/REPORT.md): HMAC-SHA256 on the grades CSV export and the teacher-only verification page.
-- C3 and C4 are integrated into **web/app.py**.
-- [Requirement-by-requirement acceptance](P1-C3-C4-REQUIREMENTS.md).
-
-The P1 report analyses the original baseline. Its source references resolve in
-`session03/project1/baseline/`, pinned to commit `8d5916436b7516547898b17fc856a54807b3638f`.
+After Class 5 the app runs on plain HTTP again, as the lab's cleanup step asks.
+Passwords stay stored with Argon2: each seeded account upgrades at its next successful login.
 
 ## Run it
 
-For a fresh local copy, Docker with Compose is required:
+You need Docker with the Compose plugin.
 
-```bash
-docker compose up -d --build --wait
+```
+git clone git@github.com:KristenPire/NoteApp.git notesapp
+cd notesapp
+docker compose up
 ```
 
-Open <http://127.0.0.1:8080>. Startup retains or creates separate persistent
-AES and HMAC keys, migrates existing comments in one verified transaction, and
-starts the app without the Flask debugger. New and updated comments are encrypted;
-pages, API and signed CSV exports return the verified, readable comments.
+The first start builds the image, launches PostgreSQL, and loads the seed data
+automatically. When it is ready, open:
 
-For the existing local HTTPS environment:
-
-```bash
-docker compose -p notesapp-lab -f docker-compose.yml -f compose.lab.yml -f docker-compose.https.yml up -d --build --wait
+```
+http://localhost:8080
 ```
 
-Open <https://localhost>. This profile requires the existing locally generated
-certificate; private certificate files are excluded from the coursework package.
+For HTTPS (Class 5), first create `nginx/certs/` as the lab describes, then:
 
-The historic C3 entry point uses the same app and keeps its existing database and keys:
-
-```bash
-docker compose -p notesapp-session03 -f compose.session03.yml up -d --build --wait
+```
+docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
 ```
 
-Open <http://127.0.0.1:8083>. No second copy of the application needs to be generated.
+and open `https://localhost`.
 
-## Keys and verification
+## Keys and tests
 
-The application reads `NOTESAPP_COMMENT_KEY` and `NOTESAPP_CSV_HMAC_KEY` from its
-process environment. Both are independent 32-byte keys encoded as 64 hex characters.
-The launcher loads the existing private files selected by their `_FILE` settings
-into that environment. Keys are generated only for a new installation, never
-printed or committed. Existing invalid keys stop startup; they are never replaced.
-The DB container has no key volume. Keep each encrypted database with its key volumes.
+On its first start the web container creates two independent 32-byte keys, one for
+comment encryption (volume `commentkey`) and one for the CSV HMAC (volume `csvhmackey`),
+and encrypts the existing comments before it serves requests. Keys are never printed
+or committed. Keep the key volumes with the database volume: deleting a key makes the
+encrypted comments unreadable or invalidates older signed exports.
 
-Run the 45 current checks in the running default web container:
+Run the checks in the running web container:
 
-```bash
+```
 docker compose exec -T -e NOTESAPP_RUN_APP_TESTS=1 web python runtime.py python -m unittest test_comment_encryption test_csv_integrity test_key_config test_password_storage -v
 ```
 
-For the existing HTTPS instance, add the same project and Compose files used to start it.
-Tests create and remove temporary notes and test accounts; production course rows remain.
-CSV export requires a teacher session. The file ends in `# HMAC: <hex digest>`.
-At `/verify-export`, an original file succeeds and a modified grade fails.
+The tests create and remove temporary notes and test accounts; the seeded rows stay.
 
 ## Test accounts
 
@@ -101,15 +81,12 @@ e.g. `bob` / `bobpw`.)
 - PostgreSQL 15
 - Docker Compose (`web` and `db` services)
 
-## Stop and retain work
+## Reset
 
-```bash
-docker compose stop
 ```
-
-Keep `pgdata`, `commentkey`, and `csvhmackey`. Deleting keys makes existing
-encrypted comments unreadable or invalidates older signed exports.
-The app retains course vulnerabilities outside the C3/C4 changes; see the P1 baseline risk analysis.
+docker compose down -v   # wipes the database and key volumes
+docker compose up        # reloads the seed data and creates new keys
+```
 
 ## Updating your fork
 
