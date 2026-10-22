@@ -26,3 +26,6 @@ figcaption { font-size: 8.6pt; color: #52606d; margin-top: 3pt; text-align: left
 h2#evidence, h2#lab-worksheet { page-break-before: always; margin-top: 0; }
 .grid img { height: 240px; width: auto; max-width: 100%; object-fit: contain; }
 pre.wide { font-size: 6.3pt; white-space: pre; overflow: hidden; }
+p[align="center"] { margin: 6pt 0 2pt; page-break-after: avoid; }
+p[align="center"] img { border: 1px solid #c9d6df; }
+p[align="center"] + p > em:only-child { font-size: 8.6pt; color: #52606d; }

@@ -1,7 +1,3 @@
----
-title: "NotesApp Transit Audit — Class 5, Lab 1"
----
-
 # NotesApp Transit Audit — Class 5, Lab 1
 
 **Pair:** HAOJIE SONG (2023905496); ANGRAN YU (2023900899)  
@@ -52,7 +48,9 @@ STATE: NotesApp now served over HTTPS (self-signed, for the lab).  ✅
 - Exact line: `username=alice&password=alicepw`
 - Before-screenshot: Fig. 1.
 
-![Fig. 1 — Before. Wireshark, Follow → HTTP Stream of `POST /login` to `localhost:8080`. The line `username=alice&password=alicepw` is readable; the server answers `HTTP/1.1 302 FOUND` (login accepted). Cookie values of other local apps are masked as `[redacted]`.](img/before-http-stream.jpg){width=60%}
+<p align="center"><img src="img/before-http-stream.jpg" width="60%" alt="Fig. 1"></p>
+
+*Fig. 1 — Before. Wireshark, Follow → HTTP Stream of `POST /login` to `localhost:8080`. The line `username=alice&password=alicepw` is readable; the server answers `HTTP/1.1 302 FOUND` (login accepted). Cookie values of other local apps are masked as `[redacted]`.*
 
 Capture: Chrome login at `http://localhost:8080`, Wireshark on the macOS loopback interface `lo0`, filter `tcp.port == 8080 and http`. Login request = frame 72, response `302 Found` = frame 75 (TCP stream 15). The screenshot is from the hand-in copy of this capture: it keeps only the login connection (frame 6, stream 0) and masks two unrelated cookie values. The login form is unchanged.
 
@@ -88,9 +86,13 @@ FINDING 1 — login in transit (plain HTTP)
 - Username or password anywhere in the stream? **No.**
 - After-screenshot: Fig. 2, next to the before-screenshot (Fig. 1).
 
-![Fig. 2 — After. The same Chrome login as `alice` / `alicepw`, now at `https://localhost`, captured with Wireshark on `lo0` (filter `tcp.port == 443`). Follow → TCP Stream of the login connection (`tcp.stream eq 6`): only the server name `localhost` and the protocol names `h2` / `http/1.1` from the TLS handshake are readable. The login request and the answers are encrypted bytes.](img/after-https-browser-lo0.png){width=60%}
+<p align="center"><img src="img/after-https-browser-lo0.png" width="60%" alt="Fig. 2"></p>
 
-![Fig. 2b — The lab's step, right-click → Follow → TLS Stream: Wireshark answers "TLS stream not found on the selected packet". Without the session keys it cannot decrypt TLS, so there is nothing to follow. Follow → TCP Stream (Fig. 2) shows the bytes as they cross the wire.](img/after-tls-stream-not-found.png){width=42%}
+*Fig. 2 — After. The same Chrome login as `alice` / `alicepw`, now at `https://localhost`, captured with Wireshark on `lo0` (filter `tcp.port == 443`). Follow → TCP Stream of the login connection (`tcp.stream eq 6`): only the server name `localhost` and the protocol names `h2` / `http/1.1` from the TLS handshake are readable. The login request and the answers are encrypted bytes.*
+
+<p align="center"><img src="img/after-tls-stream-not-found.png" width="42%" alt="Fig. 2b"></p>
+
+*Fig. 2b — The lab's step, right-click → Follow → TLS Stream: Wireshark answers "TLS stream not found on the selected packet". Without the session keys it cannot decrypt TLS, so there is nothing to follow. Follow → TCP Stream (Fig. 2) shows the bytes as they cross the wire.*
 
 Capture: the same attack as Finding 1 — Chrome, Wireshark on `lo0`, port 443 only. Login at 13:40:17; nginx logged `POST /login` → `302` and `GET /dashboard` → `200` in the same second, so the login worked. In the capture this is TCP stream 6: a TLS 1.3 handshake (`ClientHello` for `localhost`, frame 42), then only encrypted records. The browser's first request after the handshake is frame 50 (13:40:17.456). Stream 6 is the only Chrome connection that carries requests; the others are spare connections (handshake only) and refused IPv6 attempts. A later connection, stream 8 at 13:42:16, is a `curl` request for the login page, without credentials.
 

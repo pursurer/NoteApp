@@ -1,7 +1,3 @@
----
-title: "NotesApp Password Audit — Class 5, Lab 2"
----
-
 # NotesApp Password Audit — Class 5, Lab 2
 
 **Pair:** HAOJIE SONG (2023905496); ANGRAN YU (2023900899)  
