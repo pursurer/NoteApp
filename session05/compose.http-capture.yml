@@ -1,0 +1,3 @@
+services:
+  web:
+    image: sha256:8f7626138fdfc37b13e657cc5a77681405cf36fb101fd9a096992d2673c0f9fd

@@ -1,0 +1,21 @@
+{
+  "subject": {
+    "commonName": "localhost"
+  },
+  "issuer": {
+    "commonName": "localhost"
+  },
+  "not_before": "Oct 22 08:47:36 2026 GMT",
+  "not_after": "Oct 22 08:47:36 2027 GMT",
+  "subject_alt_name": [
+    [
+      "DNS",
+      "localhost"
+    ],
+    [
+      "IP Address",
+      "127.0.0.1"
+    ]
+  ],
+  "sha256": "4eb986ed35cc802b9865df5f4e1805a7439d1c99f24caeff841360575aa18e56"
+}

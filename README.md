@@ -1,5 +1,7 @@
 # NotesApp
 
+**Student:** HAOJIE SONG (2023905496)
+
 A small grades application used throughout the Computer Security course. Teachers
 record grades and comments for their classes, students read their own grades, and an
 admin manages users and classes.
@@ -7,15 +9,16 @@ admin manages users and classes.
 Class 4 adds HMAC-SHA256 to CSV exports and a teacher-only verification page.
 See [the Class 4 instructions](session04/README.zh-CN.md) for use and tests.
 
-Class 5 HTTP capture evidence and Finding 1 are in [session05](session05/README.zh-CN.md).
-HTTPS is now running locally with nginx and a self-signed certificate; see
-[Parts 2-4 and the transit audit](session05/https/README.zh-CN.md) for the tested
-configuration, actual TLS capture, certificate comparison, and native GUI evidence.
+Class 5 HTTP capture, HTTPS and password storage: the two lab reports are in the section below.
 
-Class 5 password storage now upgrades legacy plaintext accounts to Argon2id on
-successful login. Alice has migrated and logged in again; see the
-[password audit summary](session05/passwords/AUDIT-SUMMARY.md) for both findings
-and the measured guessing-speed comparison.
+## Class 5 — HTTPS & password storage audits
+
+- Pair: **HAOJIE SONG (2023905496)**; **ANGRAN YU (2023900899)**.
+- [Lab 1 — Traffic-in-transit audit](session05/submission/Lab1-Transit-Audit.md) ([PDF](session05/submission/Class05-Lab1-Transit-Audit.pdf)): login readable over plain HTTP, HTTPS with nginx and a self-signed certificate, re-capture under HTTPS, certificate trust verdict.
+- [Lab 2 — Password storage audit](session05/submission/Lab2-Password-Audit.md) ([PDF](session05/submission/Class05-Lab2-Password-Audit.pdf)): unsalted-MD5 crack, Argon2 upgrade-on-login, measured MD5 vs Argon2 guessing speed.
+- Evidence and scripts: [session05/https](session05/https/) and [session05/passwords](session05/passwords/).
+
+After the lab, the app runs again on plain HTTP (`http://localhost:8080`), as the lab's cleanup step asks. Passwords stay stored with Argon2: each legacy account upgrades at its next successful login.
 
 ## P1, C3 and C4 delivery
 

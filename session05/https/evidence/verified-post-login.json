@@ -1,0 +1,20 @@
+{
+  "captured_at": "2026-10-22T11:52:50.047945+02:00",
+  "client": "Python http.client; explicit local public certificate; certificate and hostname verification enabled",
+  "account": "alice / alicepw (course demo account)",
+  "requests_on_single_connection": [
+    "POST /login",
+    "GET /dashboard"
+  ],
+  "login_post_status": 302,
+  "login_post_location": "/",
+  "authenticated_dashboard_status": 200,
+  "login_succeeded": true,
+  "tls_version": "TLSv1.2",
+  "cipher": "ECDHE-RSA-CHACHA20-POLY1305",
+  "capture_point": "nginx network namespace TCP 443 before TLS termination; not macOS lo0",
+  "pcap": "https-login-post-verified.pcap",
+  "tcp_stream": 0,
+  "session_keys_loaded": false,
+  "cookies_saved_in_metadata": false
+}

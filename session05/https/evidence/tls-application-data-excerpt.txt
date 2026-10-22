@@ -1,0 +1,14 @@
+TLS Application Data, frame 10, TCP stream 0
+00000000  70 be 08 90 8f c5 f6 73 9c bb e2 ef d1 32 66 7b  p......s.....2f{
+00000010  20 49 bf 83 83 29 2b 92 08 60 c7 9f a6 77 62 df   I...)+..`...wb.
+00000020  62 ef a0 ab 21 32 d7 a2 c6 48 c3 f9 34 d4 af 46  b...!2...H..4..F
+00000030  94 2b c8 d3 14 70 01 f8 2a 29 ab f4 b6 42 19 67  .+...p..*)...B.g
+00000040  8c c5 11 35 17 eb 63 0c fb 54 d5 2b bd 8b 52 2e  ...5..c..T.+..R.
+00000050  5d 0b db 1e eb 99 82 9d 7d 99 c7 44 31 16 d5 05  ].......}..D1...
+00000060  c3 c1 1d bf 29 9d 02 7b 59 aa 3b 6b b5 4f 9c 79  ....)..{Y.;k.O.y
+00000070  5c f1 79 26 6e 94 3b 12 54 1e 6a 95 ae bf 5f 6c  \.y&n.;.T.j..._l
+00000080  51 87 0c 19 74 08 a5 9e 0b 92 70 b2 6d dd d5 f7  Q...t.....p.m...
+00000090  fb f3 f0 ff e8 bf 4f 8a a6 7f e6 59 05 af 62 e3  ......O....Y..b.
+000000a0  fe 91 34 ae be fe be be 5a 7e 75 c4 3f 1d 3d 58  ..4.....Z~u.?.=X
+000000b0  e7 9c fb dc 93 61 d5 0a c3 69 b2 0b 72 64 29 23  .....a...i..rd)#
+[encrypted payload excerpt]

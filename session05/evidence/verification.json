@@ -1,0 +1,16 @@
+{
+  "captured_at": "2026-10-22T10:25:02.174068+02:00",
+  "capture_point": "NotesApp web container, TCP port 5000 (not host lo0)",
+  "browser_url": "http://localhost:8080/login",
+  "frame": 7,
+  "tcp_stream": 1,
+  "method": "POST",
+  "uri": "/login",
+  "host": "localhost:8080",
+  "content_type": "application/x-www-form-urlencoded",
+  "content_length": 31,
+  "body": "username=alice&password=alicepw",
+  "pcap_sha256": "9875a8ab769a61603035640d3fa72cc5be15728a717aa37435d226ba0bcff955",
+  "scope": "Class 5 first 15-minute task only; no HTTPS remediation performed",
+  "host_capture_blocker": "macOS BPF device permission denied; sudo requires the user password"
+}

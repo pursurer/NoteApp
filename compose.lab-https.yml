@@ -1,0 +1,14 @@
+# Local containment for the Class 5 HTTPS overlay. Apply it last:
+# docker compose -p notesapp-lab -f docker-compose.yml -f compose.lab.yml \
+#   -f docker-compose.https.yml -f compose.lab-https.yml up -d
+# The course file publishes nginx on every interface; here it listens on loopback only.
+# compose.lab.yml makes the default network internal, so nginx joins frontend to publish ports.
+services:
+  nginx:
+    ports: !override
+      - "127.0.0.1:443:443"
+      - "127.0.0.1:80:80"
+    networks:
+      - frontend
+    mem_limit: 128m
+    cpus: 0.5

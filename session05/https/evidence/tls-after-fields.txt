@@ -1,0 +1,22 @@
+frame	stream	protocol	info
+4	0	TLSv1	Client Hello (SNI=localhost)
+6	0	TLSv1.2	Server Hello, Certificate, Server Key Exchange, Server Hello Done
+8	0	TLSv1.2	Client Key Exchange, Change Cipher Spec, Encrypted Handshake Message
+9	0	TLSv1.2	New Session Ticket, Change Cipher Spec, Encrypted Handshake Message
+10	0	TLSv1.2	Application Data, Application Data
+11	0	TLSv1.2	Application Data
+12	0	TLSv1.2	Encrypted Alert
+20	1	TLSv1	Client Hello (SNI=localhost)
+22	1	TLSv1.2	Server Hello, Certificate, Server Key Exchange, Server Hello Done
+24	1	TLSv1.2	Client Key Exchange, Change Cipher Spec, Encrypted Handshake Message
+25	1	TLSv1.2	New Session Ticket, Change Cipher Spec, Encrypted Handshake Message
+26	1	TLSv1.2	Application Data
+27	1	TLSv1.2	Application Data
+28	1	TLSv1.2	Encrypted Alert
+36	2	TLSv1	Client Hello (SNI=localhost)
+38	2	TLSv1.2	Server Hello, Certificate, Server Key Exchange, Server Hello Done
+40	2	TLSv1.2	Client Key Exchange, Change Cipher Spec, Encrypted Handshake Message
+41	2	TLSv1.2	New Session Ticket, Change Cipher Spec, Encrypted Handshake Message
+42	2	TLSv1.2	Application Data
+43	2	TLSv1.2	Application Data
+45	2	TLSv1.2	Encrypted Alert

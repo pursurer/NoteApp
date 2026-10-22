@@ -1,0 +1,28 @@
+test_corrupt_hash_is_rejected_without_server_error (test_password_storage.PasswordStorageTests.test_corrupt_hash_is_rejected_without_server_error) ... ok
+test_equal_passwords_receive_different_salts (test_password_storage.PasswordStorageTests.test_equal_passwords_receive_different_salts) ... ok
+test_hash_itself_cannot_be_used_as_password (test_password_storage.PasswordStorageTests.test_hash_itself_cannot_be_used_as_password) ... ok
+test_unknown_account_is_denied (test_password_storage.PasswordStorageTests.test_unknown_account_is_denied) ... ok
+test_upgrade_only_on_success_and_verify_on_next_login (test_password_storage.PasswordStorageTests.test_upgrade_only_on_success_and_verify_on_next_login) ... ok
+test_anonymous_and_student_cannot_export_or_verify (test_csv_integrity.CsvAppTests.test_anonymous_and_student_cannot_export_or_verify) ... ok
+test_changed_export_is_rejected_by_server (test_csv_integrity.CsvAppTests.test_changed_export_is_rejected_by_server) ... ok
+test_full_and_filtered_exports_verify_with_real_database (test_csv_integrity.CsvAppTests.test_full_and_filtered_exports_verify_with_real_database) ... ok
+test_grade_change_14_to_18_is_rejected_by_server (test_csv_integrity.CsvAppTests.test_grade_change_14_to_18_is_rejected_by_server) ... ok
+test_missing_and_unsigned_files_are_rejected (test_csv_integrity.CsvAppTests.test_missing_and_unsigned_files_are_rejected) ... ok
+test_teacher_page_exposes_export_and_verification_links (test_csv_integrity.CsvAppTests.test_teacher_page_exposes_export_and_verification_links) ... ok
+test_upload_size_is_bounded (test_csv_integrity.CsvAppTests.test_upload_size_is_bounded) ... ok
+test_generated_key_persists_and_is_private (test_csv_integrity.CsvIntegrityTests.test_generated_key_persists_and_is_private) ... ok
+test_grade_header_and_comment_tampering_fail (test_csv_integrity.CsvIntegrityTests.test_grade_header_and_comment_tampering_fail) ... ok
+test_header_only_empty_export_round_trips (test_csv_integrity.CsvIntegrityTests.test_header_only_empty_export_round_trips) ... ok
+test_invalid_existing_keys_are_never_replaced (test_csv_integrity.CsvIntegrityTests.test_invalid_existing_keys_are_never_replaced) ... ok
+test_invalid_key_and_payload_fail (test_csv_integrity.CsvIntegrityTests.test_invalid_key_and_payload_fail) ... ok
+test_key_symlinks_are_rejected (test_csv_integrity.CsvIntegrityTests.test_key_symlinks_are_rejected) ... ok
+test_line_ending_changes_fail (test_csv_integrity.CsvIntegrityTests.test_line_ending_changes_fail) ... ok
+test_matches_independent_openssl_reference (test_csv_integrity.CsvIntegrityTests.test_matches_independent_openssl_reference) ... ok
+test_missing_malformed_truncated_and_appended_footers_fail (test_csv_integrity.CsvIntegrityTests.test_missing_malformed_truncated_and_appended_footers_fail) ... ok
+test_multiline_unicode_quotes_and_hmac_text_round_trip (test_csv_integrity.CsvIntegrityTests.test_multiline_unicode_quotes_and_hmac_text_round_trip) ... ok
+test_wrong_key_fails (test_csv_integrity.CsvIntegrityTests.test_wrong_key_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.189s
+
+OK

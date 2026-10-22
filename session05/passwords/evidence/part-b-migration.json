@@ -1,0 +1,67 @@
+{
+  "verified_at": "2026-10-22T10:01:14.468167+00:00",
+  "target": "notesapp-lab; existing database; https://localhost/login",
+  "client": "Python urllib HTTPS form login, validating both the local certificate and hostname.",
+  "tls_verification": true,
+  "before": {
+    "alice_was_seed_plaintext": true,
+    "database": {
+      "users": 35,
+      "classes": 4,
+      "enrollments": 60,
+      "notes": 60,
+      "user_metadata_md5": "8af0fdc053e184132f40194d5fee01dd",
+      "other_passwords_md5": "404f2c31efcde77f8a7bc9d48040506d",
+      "notes_md5": "0f52d461f2069766545d0de75bc2f7a5"
+    }
+  },
+  "wrong_password_before_migration": {
+    "final_status": 200,
+    "final_path": "/login",
+    "redirect_statuses": [],
+    "invalid_credentials_shown": true,
+    "dashboard_blocked": true
+  },
+  "first_successful_login": {
+    "final_status": 200,
+    "final_path": "/dashboard",
+    "redirect_statuses": [
+      302,
+      302
+    ],
+    "invalid_credentials_shown": false
+  },
+  "after": {
+    "alice_storage": "$argon2id$v=19$m=65536,t=3,p=4$...",
+    "alice_hash_sha256": "36e00ff0fafda3af9604c33620690c391ee9e32109fb8d87863c4b6a72b87acf",
+    "plaintext_replaced": true
+  },
+  "second_successful_login": {
+    "final_status": 200,
+    "final_path": "/dashboard",
+    "redirect_statuses": [
+      302,
+      302
+    ],
+    "invalid_credentials_shown": false
+  },
+  "second_login_hash_unchanged": true,
+  "wrong_password_after_migration": {
+    "final_status": 200,
+    "final_path": "/login",
+    "redirect_statuses": [],
+    "invalid_credentials_shown": true,
+    "dashboard_blocked": true
+  },
+  "final_database": {
+    "users": 35,
+    "classes": 4,
+    "enrollments": 60,
+    "notes": 60,
+    "user_metadata_md5": "8af0fdc053e184132f40194d5fee01dd",
+    "other_passwords_md5": "404f2c31efcde77f8a7bc9d48040506d",
+    "notes_md5": "0f52d461f2069766545d0de75bc2f7a5"
+  },
+  "only_alice_password_changed": true,
+  "note": "Other legacy accounts upgrade on their own successful login. No database reset or bulk migration."
+}

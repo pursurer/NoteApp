@@ -1,0 +1,7 @@
+Frame 7, TCP stream 1
+POST /login HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 31
+
+username=alice&password=alicepw

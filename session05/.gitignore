@@ -1,0 +1,7 @@
+tmp/
+# Not part of the hand-in: unrelated localhost cookies, personal browser tabs,
+# Chinese review drafts and a local copy of the course web page.
+evidence/wireshark-http-stream.jpg
+https/evidence/browser-github-certificate.jpg
+submission/*.zh-CN.md
+passwords/source/password-audit.html

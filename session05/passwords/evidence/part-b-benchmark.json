@@ -1,0 +1,29 @@
+{
+  "measured_at": "2026-10-22T10:01:22.369290+00:00",
+  "method": "Teacher scaffold: time.time; 100000 MD5 hashes and one default PasswordHasher.hash; single CPU-container run, not a GPU estimate.",
+  "python": "3.11.17 (main, Oct 21 2026, 01:13:51) [GCC 14.2.0]",
+  "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+  "argon2_cffi": "23.1.0",
+  "argon2_parameters": {
+    "type": "ID",
+    "memory_cost_kib": 65536,
+    "time_cost": 3,
+    "parallelism": 4,
+    "hash_len": 32,
+    "salt_len": 16
+  },
+  "md5": {
+    "iterations": 100000,
+    "seconds": 0.028903722763061523,
+    "guesses_per_second": 3459761.9420775212,
+    "guesses_per_day": 298923431795.49786
+  },
+  "argon2": {
+    "iterations": 1,
+    "seconds": 0.09799814224243164,
+    "guesses_per_second": 10.204275072135152,
+    "guesses_per_day": 881649.3662324771
+  },
+  "argon2_slowdown": 339050.24292466446,
+  "daily_estimate": "Unrounded measured rate multiplied by 86400; assumes constant serial throughput for 24 hours."
+}

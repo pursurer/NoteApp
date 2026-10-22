@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-22T11:57:07.031297+02:00",
+  "browser": "Chrome",
+  "github": {
+    "subject": "github.com",
+    "issued_by": "Sectigo Public Server Authentication CA DV E36",
+    "chain_leaf_to_root": [
+      "github.com",
+      "Sectigo Public Server Authentication CA DV E36",
+      "Sectigo Public Server Authentication Root E46"
+    ],
+    "browser_connection_status": "secure; certificate valid",
+    "evidence": [
+      "browser-github-certificate.jpg",
+      "browser-github-chain.jpg"
+    ]
+  },
+  "localhost": {
+    "subject": "localhost",
+    "issued_by": "localhost",
+    "chain": [
+      "localhost"
+    ],
+    "browser_error": "NET::ERR_CERT_AUTHORITY_INVALID",
+    "evidence": [
+      "browser-localhost-certificate.jpg",
+      "browser-localhost-chain.jpg"
+    ]
+  }
+}

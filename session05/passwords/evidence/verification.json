@@ -1,0 +1,54 @@
+{
+  "completed_at": "2026-10-22T11:30:45.163529+02:00",
+  "python": "3.9.6",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "dictionary_entries": 170,
+  "unique_dictionary_entries": 170,
+  "results": {
+    "dictionary": {
+      "candidate_count": 170,
+      "cracked": 4,
+      "total": 6,
+      "elapsed_ms_as_printed": "0.1",
+      "timing_scope": "attack loop only; excludes file loading",
+      "recovered": {
+        "liwei": "123456",
+        "aisha": "password1",
+        "tomk": "qwerty123",
+        "sofia": "iloveyou"
+      },
+      "not_cracked": [
+        "marie",
+        "raj"
+      ],
+      "all_matches_recomputed": true
+    },
+    "dictionary_plus_rules": {
+      "candidate_count": 176,
+      "cracked": 5,
+      "total": 6,
+      "elapsed_ms_as_printed": "0.1",
+      "timing_scope": "attack loop only; excludes file loading",
+      "recovered": {
+        "liwei": "123456",
+        "aisha": "password1",
+        "tomk": "qwerty123",
+        "sofia": "iloveyou",
+        "marie": "mariepw"
+      },
+      "not_cracked": [
+        "raj"
+      ],
+      "all_matches_recomputed": true
+    }
+  },
+  "sha256": {
+    "crack/make_dump.py": "8020aa2c89431caea00b9c0f6a901294ed77604b01a97b11878af996dd96b271",
+    "crack/crack.py": "38f742a6b7b9046d3fd5013e49036f7dda9c4fcdc006e3628ae0410bb17eead2",
+    "crack/crack_rules.py": "44b0309055120918bd8e706ddf75cbcf238755291b2ce31eb262826f84bbe2df",
+    "crack/wordlist.txt": "3614d52dbb45e8b0080821bdf1a0c0ad2cbac2cc85551239f4f2bc2a9ebc5e3f",
+    "crack/leaked_users.txt": "654d162d9ee5d572a9250b7f687f77f7b80980bde507fb06765826fbce1591fe",
+    "evidence/run.txt": "c359f2433cebb5c9e6e3554d81d34530b37dda839df764a3f3ca6448f8839997",
+    "evidence/prediction.json": "f505dd4895f963ccf2dd2063bdef8764f0f5233280d62526de655c7549771fc8"
+  }
+}

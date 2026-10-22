@@ -1,0 +1,2 @@
+frame	stream	method	URI	host	form keys	form values
+6	0	POST	/login	localhost:8080	username,password	alice,alicepw
