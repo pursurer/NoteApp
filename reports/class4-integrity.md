@@ -1,6 +1,6 @@
 # Class 4 - NotesApp CSV export integrity
 
-**P1/C3/C4 group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).  
+**Student:** HAOJIE SONG (2023905496). Individual work.  
 **Updated:** 22 October 2026.
 
 ## Required behavior

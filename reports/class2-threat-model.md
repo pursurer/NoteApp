@@ -1,6 +1,6 @@
 # NotesApp - Session 02 lab
 
-**Group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).
+**Group:** HAOJIE SONG (2023905496); ZIQIAN YU (2023902046).
 
 Fork: https://github.com/pursurer/NoteApp. Baseline: teacher commit [`8d5916436b7516547898b17fc856a54807b3638f`](https://github.com/KristenPire/NoteApp/tree/8d5916436b7516547898b17fc856a54807b3638f).
 

@@ -2,7 +2,7 @@
 
 Date: 8 October 2026. Updated: 22 October 2026. Course source: `Session 03 Symmetric Encryption.pdf`, actual PDF page 31.
 
-**Group:** ZIQIAN YU (2023902046); HAOJIE SONG (2023905496).
+**Group:** HAOJIE SONG (2023905496); ZIQIAN YU (2023902046).
 
 ## Scope
 

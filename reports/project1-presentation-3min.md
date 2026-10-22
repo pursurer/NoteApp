@@ -1,7 +1,7 @@
 # Project 1 - Three-minute speaking script
 
-**ZIQIAN YU — 2023902046**  
-**HAOJIE SONG — 2023905496**
+**HAOJIE SONG — 2023905496**  
+**ZIQIAN YU — 2023902046**
 
 Prepared on 22 October 2026. Use the pinned baseline diagram and risk table.
 
