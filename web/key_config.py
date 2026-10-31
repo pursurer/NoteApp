@@ -45,8 +45,3 @@ def load_environment():
         environment_key(name)
     if environment_key("NOTESAPP_COMMENT_KEY") == environment_key("NOTESAPP_CSV_HMAC_KEY"):
         raise ValueError("Use independent AES and HMAC keys.")
-    # Class 7: the JWT signing secret is 32 random bytes (64 hex characters).
-    # An explicit JWT_SECRET, for example from a secrets store, takes precedence.
-    if "JWT_SECRET" not in os.environ:
-        os.environ["JWT_SECRET"] = persistent_key(
-            os.environ.get("JWT_SECRET_FILE", "/run/notesapp-secrets/jwt.key")).hex()

@@ -21,9 +21,9 @@ services:
       DB_NAME: notesapp
       DB_USER: notesapp
       POSTGRES_PASSWORD: notesapp_pg_pw_2024
-      # Class 7: no s3cr3t. The launcher creates a 256-bit random JWT secret here
-      # on first start and passes it to the app as JWT_SECRET; it is never committed.
-      JWT_SECRET_FILE: /run/notesapp-secrets/jwt.key
+      # Class 7: long random secret from python3 -c "import secrets; print(secrets.token_urlsafe(32))".
+      # Committed for this lab only; in real life it comes from a secrets store.
+      JWT_SECRET: "tvSkjMJS1jP7f4H64O3AMXcvFM9bbo00OwCr2r1laTo"
       SECRET_KEY: dev-session-key
       NOTESAPP_COMMENT_KEY_FILE: /run/notesapp-secrets/comments.key
       NOTESAPP_CSV_HMAC_KEY_FILE: /run/notesapp-export/csv-hmac.key

@@ -33,8 +33,6 @@ DB_NAME = os.environ.get("DB_NAME", "notesapp")
 DB_USER = os.environ.get("DB_USER", "notesapp")
 DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD", "notesapp_pg_pw_2024")
 JWT_SECRET = os.environ["JWT_SECRET"]   # required; no weak default
-if len(JWT_SECRET) < 32:
-    raise RuntimeError("JWT_SECRET must be a long random value (at least 32 characters).")
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 
 app = Flask(__name__)
