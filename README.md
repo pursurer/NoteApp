@@ -19,6 +19,8 @@ The state handed in on 22 October 2026 is tagged `submitted-2026-10-22`.
 | Class 3 — symmetric encryption | HAOJIE SONG (2023905496), individual | [Caesar, ECB vs GCM, comment encryption](reports/class3-encryption.md) | AES-256-GCM on the comment column |
 | Class 4 — integrity | HAOJIE SONG (2023905496), individual | [Signed CSV export](reports/class4-integrity.md) | HMAC-SHA256 on `/export.csv`, teacher page `/verify-export` |
 | Class 5 — HTTPS and password storage | HAOJIE SONG (2023905496); ANGRAN YU (2023900899) | [Lab 1 transit audit](reports/class5-lab1-transit-audit.md) ([PDF](reports/class5-lab1-transit-audit.pdf)) · [Lab 2 password audit](reports/class5-lab2-password-audit.md) ([PDF](reports/class5-lab2-password-audit.pdf)) | nginx with TLS (`nginx/`, `docker-compose.https.yml`); Argon2 with upgrade on login; MD5 cracking in `crack/` |
+| Class 6 — forge a token | HAOJIE SONG (2023905496), individual | [Forged token finding](reports/class6-forged-token.md) | — (attack on the unfixed app) |
+| Class 7 — fix the login | HAOJIE SONG (2023905496), individual | [Login fix and audit](reports/class7-login-fix.md) | `verify_jwt` accepts only HS256; long random `JWT_SECRET` from the environment, no default |
 
 After Class 5 the app runs on plain HTTP again, as the lab's cleanup step asks.
 Passwords stay stored with Argon2: each seeded account upgrades at its next successful login.
@@ -50,16 +52,18 @@ and open `https://localhost`.
 
 ## Keys and tests
 
-On its first start the web container creates two independent 32-byte keys, one for
-comment encryption (volume `commentkey`) and one for the CSV HMAC (volume `csvhmackey`),
-and encrypts the existing comments before it serves requests. Keys are never printed
-or committed. Keep the key volumes with the database volume: deleting a key makes the
+On its first start the web container creates three independent 32-byte keys: one for
+comment encryption and one for signing login tokens (`JWT_SECRET`, Class 7), both in volume
+`commentkey`, and one for the CSV HMAC (volume `csvhmackey`). It encrypts the existing
+comments before it serves requests. Keys are never printed or committed. In production,
+`JWT_SECRET` would come from a secrets store, never from a committed file; a value already
+set in the environment is used as is. Keep the key volumes with the database volume: deleting a key makes the
 encrypted comments unreadable or invalidates older signed exports.
 
 Run the checks in the running web container:
 
 ```
-docker compose exec -T -e NOTESAPP_RUN_APP_TESTS=1 web python runtime.py python -m unittest test_comment_encryption test_csv_integrity test_key_config test_password_storage -v
+docker compose exec -T -e NOTESAPP_RUN_APP_TESTS=1 web python runtime.py python -m unittest test_comment_encryption test_csv_integrity test_key_config test_password_storage test_jwt -v
 ```
 
 The tests create and remove temporary notes and test accounts; the seeded rows stay.

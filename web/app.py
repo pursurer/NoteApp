@@ -32,7 +32,9 @@ DB_HOST = os.environ.get("DB_HOST", "db")
 DB_NAME = os.environ.get("DB_NAME", "notesapp")
 DB_USER = os.environ.get("DB_USER", "notesapp")
 DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD", "notesapp_pg_pw_2024")
-JWT_SECRET = os.environ.get("JWT_SECRET", "s3cr3t")
+JWT_SECRET = os.environ["JWT_SECRET"]   # required; no weak default
+if len(JWT_SECRET) < 32:
+    raise RuntimeError("JWT_SECRET must be a long random value (at least 32 characters).")
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 
 app = Flask(__name__)
@@ -93,10 +95,10 @@ def make_jwt(payload: dict) -> str:
 
 
 def verify_jwt(token: str):
-    """Decode a JWT. Accepts alg:none (no signature) and HS256 with a short key.
+    """Decode a JWT and return its payload only if the HS256 signature is valid.
 
-    This is intentionally broken (flaw #4): an attacker can forge any identity
-    by setting "alg":"none", and the HS256 key is trivially guessable.
+    Class 7 fix for flaw #4: the server pins the algorithm, so "alg":"none" and
+    every other header value are rejected, and the key is a long random secret.
     """
     try:
         h_b64, p_b64, sig_b64 = token.split(".")
@@ -108,17 +110,15 @@ def verify_jwt(token: str):
     except Exception:
         return None
 
-    alg = header.get("alg", "").lower()
-    if alg == "none":
-        # No signature verification at all.
-        return payload
-    if alg == "hs256":
-        signing_input = f"{h_b64}.{p_b64}".encode()
-        expected = _b64url(hmac.new(JWT_SECRET.encode(), signing_input, hashlib.sha256).digest())
-        if hmac.compare_digest(expected, sig_b64):
-            return payload
+    # The SERVER decides the algorithm. The token's header does not get to choose.
+    # Anything that is not exactly HS256 (including "none") is rejected.
+    if header.get("alg") != "HS256":
         return None
-    return None
+    signing_input = f"{h_b64}.{p_b64}".encode()
+    expected = _b64url(hmac.new(JWT_SECRET.encode(), signing_input, hashlib.sha256).digest())
+    if not hmac.compare_digest(expected, sig_b64):
+        return None
+    return payload
 
 
 def current_identity():

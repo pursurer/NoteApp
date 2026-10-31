@@ -34,15 +34,25 @@ class EnvironmentKeyTests(unittest.TestCase):
     def test_launcher_reuses_existing_files_and_exports_separate_keys(self):
         with tempfile.TemporaryDirectory() as folder:
             env = {name + "_FILE": str(Path(folder) / name)
-                   for name in ("NOTESAPP_COMMENT_KEY", "NOTESAPP_CSV_HMAC_KEY")}
+                   for name in ("NOTESAPP_COMMENT_KEY", "NOTESAPP_CSV_HMAC_KEY", "JWT_SECRET")}
             values = []
             for _ in range(2):
                 with patch.dict(os.environ, env, clear=True):
                     load_environment()
                     values.append(tuple(environment_key(name) for name in
-                                        ("NOTESAPP_COMMENT_KEY", "NOTESAPP_CSV_HMAC_KEY")))
+                                        ("NOTESAPP_COMMENT_KEY", "NOTESAPP_CSV_HMAC_KEY", "JWT_SECRET")))
             self.assertEqual(values[0], values[1])
-            self.assertNotEqual(*values[0])
+            self.assertEqual(3, len(set(values[0])))
+
+    def test_explicit_jwt_secret_is_kept(self):
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {
+                "NOTESAPP_COMMENT_KEY_FILE": str(Path(folder) / "comments.key"),
+                "NOTESAPP_CSV_HMAC_KEY_FILE": str(Path(folder) / "csv.key"),
+                "JWT_SECRET_FILE": str(Path(folder) / "jwt.key"),
+                "JWT_SECRET": "from-a-secrets-store-" + "x" * 32}, clear=True):
+            load_environment()
+            self.assertEqual("from-a-secrets-store-" + "x" * 32, os.environ["JWT_SECRET"])
+            self.assertFalse((Path(folder) / "jwt.key").exists())
 
     def test_invalid_explicit_key_never_falls_back_to_a_file(self):
         with patch.dict(os.environ, {"NOTESAPP_COMMENT_KEY": "invalid"}, clear=True):
