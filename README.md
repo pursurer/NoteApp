@@ -14,13 +14,13 @@ The state handed in on 22 October 2026 is tagged `submitted-2026-10-22`.
 
 | Class | Students | Report | Change in the app |
 |---|---|---|---|
-| Session 2 — threat model | HAOJIE SONG (2023905496); ZIQIAN YU (2023902046) | [Data flows and STRIDE](reports/class2-threat-model.md) | — |
-| Project 1 — risk analysis | HAOJIE SONG (2023905496); ZIQIAN YU (2023902046) | [Report](reports/project1-risk-analysis.md) ([PDF](reports/project1-risk-analysis.pdf)) · [3-minute script](reports/project1-presentation-3min.md) | — (analyses the original app, teacher commit `8d59164`) |
-| Class 3 — symmetric encryption | HAOJIE SONG (2023905496), individual | [Caesar, ECB vs GCM, comment encryption](reports/class3-encryption.md) | AES-256-GCM on the comment column |
-| Class 4 — integrity | HAOJIE SONG (2023905496), individual | [Signed CSV export](reports/class4-integrity.md) | HMAC-SHA256 on `/export.csv`, teacher page `/verify-export` |
+| Session 2 — threat model | HAOJIE SONG (2023905496) | [Data flows and STRIDE](reports/class2-threat-model.md) | — |
+| Project 1 — risk analysis | HAOJIE SONG (2023905496) | [Report](reports/project1-risk-analysis.md) ([PDF](reports/project1-risk-analysis.pdf)) · [3-minute script](reports/project1-presentation-3min.md) | — (analyses the original app, teacher commit `8d59164`) |
+| Class 3 — symmetric encryption | HAOJIE SONG (2023905496) | [Caesar, ECB vs GCM, comment encryption](reports/class3-encryption.md) | AES-256-GCM on the comment column |
+| Class 4 — integrity | HAOJIE SONG (2023905496) | [Signed CSV export](reports/class4-integrity.md) | HMAC-SHA256 on `/export.csv`, teacher page `/verify-export` |
 | Class 5 — HTTPS and password storage | HAOJIE SONG (2023905496); ANGRAN YU (2023900899) | [Lab 1 transit audit](reports/class5-lab1-transit-audit.md) ([PDF](reports/class5-lab1-transit-audit.pdf)) · [Lab 2 password audit](reports/class5-lab2-password-audit.md) ([PDF](reports/class5-lab2-password-audit.pdf)) | nginx with TLS (`nginx/`, `docker-compose.https.yml`); Argon2 with upgrade on login; MD5 cracking in `crack/` |
-| Class 6 — forge a token | HAOJIE SONG (2023905496), individual | [Forged token finding](reports/class6-forged-token.md) | — (attack on the unfixed app) |
-| Class 7 — fix the login | HAOJIE SONG (2023905496), individual | [Login fix and audit](reports/class7-login-fix.md) | `verify_jwt` accepts only HS256; long random `JWT_SECRET` in `docker-compose.yml`, no default in the code |
+| Class 6 — forge a token | HAOJIE SONG (2023905496) | [Forged token finding](reports/class6-forged-token.md) | — (attack on the unfixed app) |
+| Class 7 — fix the login | HAOJIE SONG (2023905496) | [Login fix and audit](reports/class7-login-fix.md) | `verify_jwt` accepts only HS256; long random `JWT_SECRET` in `docker-compose.yml`, no default in the code |
 
 After Class 5 the app runs on plain HTTP again, as the lab's cleanup step asks.
 Passwords stay stored with Argon2: each seeded account upgrades at its next successful login.

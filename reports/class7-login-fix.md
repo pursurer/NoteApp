@@ -1,6 +1,6 @@
 # Class 7 - Login fix (NotesApp flaw #4 closed)
 
-**Student:** HAOJIE SONG (2023905496). Individual work.
+**Student:** HAOJIE SONG (2023905496)
 
 ```
 LOGIN FIX — NotesApp flaw #4 (auth) closed

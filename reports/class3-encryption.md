@@ -2,7 +2,7 @@
 
 Date: 8 October 2026. Updated: 22 October 2026. Source: `Session 03 Symmetric Encryption.pdf`, slide 30.
 
-**Student:** HAOJIE SONG (2023905496). Individual work.
+**Student:** HAOJIE SONG (2023905496)
 
 ## Result
 
@@ -11,6 +11,19 @@ The three parts are complete in the local homework environment.
 - Caesar: recovered shift 11 and the complete practice message.
 - Image: ECB retained a visible outline. GCM hid the outline and rejected a changed byte.
 - NotesApp: encrypted and verified 60 comments. All 17 tests passed.
+
+## Code
+
+- [`class3_caesar.py`](class3_caesar.py): Caesar encryption and the frequency-analysis crack.
+- [`class3_caesar_check.py`](class3_caesar_check.py): makes the practice message, encrypts it with shift 11, and checks that all 26 shifts are recovered.
+- [`class3_image_modes.py`](class3_image_modes.py): encrypts the same image with AES-ECB and AES-GCM and builds the side-by-side picture.
+
+```
+pip install cryptography pillow
+python3 reports/class3_caesar_check.py
+python3 reports/class3_caesar.py reports/class3-results/caesar_ciphertext.txt
+python3 reports/class3_image_modes.py
+```
 
 ## 1. Break Caesar
 
@@ -57,7 +70,7 @@ Both modes recovered the exact original pixels. GCM rejected the changed ciphert
 
 The program encrypts raw pixels. It does not encrypt compressed PNG file bytes.
 PNG previews omit ECB padding and the GCM tag.
-The complete encrypted byte files and public metadata are separate.
+The script also writes the complete encrypted bytes and the public metadata to `reports/class3-results/`.
 The key is discarded after verification.
 
 ## 3. Encrypt the NotesApp comment column

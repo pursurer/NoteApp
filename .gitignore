@@ -18,3 +18,6 @@ web/instance/
 
 # Class 5 HTTPS lab: self-signed certificate and its private key, generated locally.
 nginx/certs/
+
+# Class 3 lab scripts write their outputs here when you run them.
+reports/class3-results/

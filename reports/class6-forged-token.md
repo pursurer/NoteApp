@@ -1,6 +1,6 @@
 # Class 6 - Forged token finding (NotesApp flaw #4)
 
-**Student:** HAOJIE SONG (2023905496). Individual work.
+**Student:** HAOJIE SONG (2023905496)
 
 ```
 FORGED-TOKEN FINDING — NotesApp flaw #4 (auth)

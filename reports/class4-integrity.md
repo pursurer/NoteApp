@@ -1,6 +1,6 @@
 # Class 4 - NotesApp CSV export integrity
 
-**Student:** HAOJIE SONG (2023905496). Individual work.  
+**Student:** HAOJIE SONG (2023905496)  
 **Updated:** 22 October 2026.
 
 ## Required behavior

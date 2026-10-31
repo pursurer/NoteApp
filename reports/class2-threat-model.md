@@ -1,6 +1,6 @@
 # NotesApp - Session 02 lab
 
-**Group:** HAOJIE SONG (2023905496); ZIQIAN YU (2023902046).
+**Student:** HAOJIE SONG (2023905496)
 
 Fork: https://github.com/pursurer/NoteApp. Baseline: teacher commit [`8d5916436b7516547898b17fc856a54807b3638f`](https://github.com/KristenPire/NoteApp/tree/8d5916436b7516547898b17fc856a54807b3638f).
 
@@ -41,6 +41,6 @@ STRIDE definitions: https://learn.microsoft.com/en-us/biztalk/core/identifying-p
 41 normal HTTP requests covered anonymous, student, teacher and admin states. The student read their own seeded grade, the teacher page showed grade IDs, and the database digest was unchanged.
 The grade, user-management and Ping POST forms were inspected but not submitted. No attack payloads or load tests were used. DB flows were reconstructed from code, not packet capture.
 
-Evidence: the HTTP observation log, web/app.py, web/templates, db/init.sql, docker-compose.yml. PostgreSQL SHOW ssl returned off. The observation ran with a local Compose overlay that bound localhost:8080, hid the DB host port and removed web host mounts.
+Evidence: web/app.py, web/templates, db/init.sql, docker-compose.yml. PostgreSQL SHOW ssl returned off. The observation ran with a local Compose overlay that bound localhost:8080, hid the DB host port and removed web host mounts.
 
 Project 1 turns this diagram and STRIDE table into the full risk analysis: see [the Project 1 report](project1-risk-analysis.md).

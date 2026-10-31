@@ -1,11 +1,10 @@
 # Project 1 - Three-minute speaking script
 
-**HAOJIE SONG — 2023905496**  
-**ZIQIAN YU — 2023902046**
+**HAOJIE SONG — 2023905496**
 
 Prepared on 22 October 2026. Use the pinned baseline diagram and risk table.
 
-## 0:00-1:00 - ZIQIAN YU
+## 0:00-1:00
 
 Our project analyses the original NotesApp. It stores student grades, teacher comments, and user accounts.
 
@@ -17,7 +16,7 @@ The teacher's Compose file adds two boundaries. The web container runs as root a
 
 Our register has twenty-one numbered flows and eighteen risks. It covers all six STRIDE categories, and every flow appears in at least one risk. Each risk has a prerequisite, evidence, likelihood, impact, and a proposed fix. We did not run attacks for this analysis.
 
-## 1:00-2:00 - HAOJIE SONG
+## 1:00-2:00
 
 We score each risk by multiplying likelihood and impact. Each uses a scale from one to five. These scores are estimates, not measured probabilities.
 
@@ -27,7 +26,7 @@ Missing record ownership checks follow with twenty. The Docker socket mount scor
 
 These three rank first because each one bypasses the identity and access checks. Other controls depend on those checks working correctly.
 
-## 2:00-3:00 - HAOJIE SONG
+## 2:00-3:00
 
 For the first risk, reject unsigned tokens, verify required claims, and use independent random signing keys.
 
