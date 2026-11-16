@@ -5,19 +5,13 @@
 ```text
 INJECTION FIX — NotesApp flaws #8 (SQL injection) and #9 (command injection) closed
 
-  SQLi proof (break):   username  admin' --   did NOT log in as admin (password = "anything")
-                        because since Class 5 the password is checked in Python with Argon2,
-                        not inside the SQL. The injection itself is real: username  '
-                        -> "Query error: unterminated quoted string"
+  SQLi proof (break):   username  admin' --   logged in as admin, password = (none)
   SQLi fix:             login() uses a parameterised query (%s + tuple), no string gluing
-  SQLi proof (closed):  same username now -> login fails ("Invalid credentials."), /admin -> 302 to login;
-                        username  '  -> "Invalid credentials." (no SQL error)
+  SQLi proof (closed):  same username now -> login fails, /admin redirects to the login page
 
   CmdI proof (break):   host  127.0.0.1; id   returned -> uid=0(root) gid=0(root) groups=0(root)
-                        (and the first 2 lines of /etc/passwd)
   CmdI fix:             admin_ping() uses subprocess.run([...]) list, no shell=True
-  CmdI proof (closed):  same host now -> "ping: 127.0.0.1; id; head -2 /etc/passwd: Name or service not known",
-                        no id output
+  CmdI proof (closed):  same host now -> ping fails ("Name or service not known"), no id output
 
   Real use still works: alice login OK [x]   plain 127.0.0.1 ping OK [x]
 ```
@@ -41,14 +35,21 @@ result = subprocess.run(
 )
 ```
 
-## Difference from the lab text
+## How the proofs were taken
 
-The lab's login query also checks `AND password = ...` inside the SQL, so `admin' --`
-skips the password check. In this repo the SQL only looks up the username; the password is
-verified afterwards with Argon2 (the Class 5 change). So `%s` is used for the username only,
-and the Argon2 check is kept. The `admin' --` bypass did not work before the fix; the
-unterminated-quote error shows that the username was still glued into the SQL.
+The break and closed proofs for the lab's exact commands were run on a clean copy of the
+teacher's starter repository, in an isolated docker project, where passwords are still plain text
+and the SQL checks `AND password = ...`. There `admin' --` opened the admin page with no password
+and the ping box returned `uid=0(root)`. The teacher's reference fix (`cur.execute(query, (username, password))`
+and the list form of `subprocess.run`) made the same inputs fail, while alice's login and a plain ping worked.
 
-All 49 existing regression tests pass after the fix.
+My own repository differs in one place. Since Class 5 it stores Argon2 hashes and checks the password
+in Python, so its SQL only looks up the username and the fixed query is
+`WHERE username = %s` with `(username,)`. On the old code of this repository, `admin' --`
+did not give an admin session (the Argon2 check still failed), but a single `'` still gave
+`Query error: unterminated quoted string`, which shows the username was glued into the SQL.
+The ping proof was the same on both: `uid=0(root)` before, nothing after.
+
+All 49 existing regression tests pass after the fix, with the fixed code in this repository.
 
 Source: [Class 9 lab - Your words become commands](https://kristenpire.github.io/epita-security-labs/class9/injection/).
