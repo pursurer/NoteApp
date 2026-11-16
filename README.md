@@ -22,6 +22,7 @@ The state handed in on 22 October 2026 is tagged `submitted-2026-10-22`.
 | Class 6 — forge a token | HAOJIE SONG (2023905496) | [Forged token finding](reports/class6-forged-token.md) | — (attack on the unfixed app) |
 | Class 7 — fix the login | HAOJIE SONG (2023905496) | [Login fix and audit](reports/class7-login-fix.md) | `verify_jwt` accepts only HS256; long random `JWT_SECRET` in `docker-compose.yml`, no default in the code |
 | Class 8 — IDOR fix | HAOJIE SONG (2023905496) | [IDOR fix and proof](reports/class8-idor-fix.md) | `/api/notes/<id>` checks ownership on the server; teachers and admins may read any note; other cross-user reads return 404 |
+| Class 9 — injection fix | HAOJIE SONG (2023905496) | [Injection fix and proof](reports/class9-injection-fix.md) | `login` uses a parameterised query (`%s` + tuple); `admin_ping` runs `subprocess.run(["ping", "-c", "1", host])` without a shell |
 
 After Class 5 the app runs on plain HTTP again, as the lab's cleanup step asks.
 Passwords stay stored with Argon2: each seeded account upgrades at its next successful login.
