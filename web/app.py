@@ -9,6 +9,7 @@ import io
 import json
 import hmac
 import time
+import secrets
 import base64
 import hashlib
 import subprocess
@@ -38,6 +39,33 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 app = Flask(__name__)
 ph = PasswordHasher()
 app.secret_key = SECRET_KEY
+# Defence in depth: the browser keeps the session cookie off most cross-site POSTs.
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+
+
+# --- CSRF protection (flaw #11) ---------------------------------------------
+def csrf_token():
+    """One random secret per session. Our own forms print it; other sites cannot read it."""
+    if "csrf" not in session:
+        session["csrf"] = secrets.token_urlsafe(32)
+    return session["csrf"]
+
+
+app.jinja_env.globals["csrf_token"] = csrf_token
+
+
+@app.before_request
+def check_csrf():
+    """Every state-changing POST must carry the session's token."""
+    if request.method == "POST" and request.endpoint != "login":
+        # Reading the form parses the body, so keep the upload bound that /verify-export
+        # used to apply before parsing (see verify_export()).
+        if request.content_length is not None and request.content_length > MAX_EXPORT_UPLOAD + 64 * 1024:
+            abort(413)
+        expected = session.get("csrf")
+        sent = request.form.get("csrf_token", "")
+        if not expected or not hmac.compare_digest(sent, expected):
+            abort(400, "CSRF token missing or wrong")
 
 # Session 03: fail at startup if the homework key is absent or invalid.
 COMMENT_CIPHER = CommentCipher.from_environment()
@@ -291,7 +319,6 @@ def teacher():
 
 @app.route("/grades", methods=["POST"])
 def grades():
-    # This homework retains the course authentication and CSRF behavior.
     if not login_required("teacher"):
         return redirect(url_for("login"))
     raw_note_id = request.form.get("note_id", "").strip()
@@ -407,7 +434,7 @@ def admin():
 
 @app.route("/admin/ping", methods=["POST"])
 def admin_ping():
-    # Flaw #11: no CSRF token. Flaw #9 fixed: no shell, host is one argument.
+    # Flaw #9 fixed: no shell, host is one argument. Flaw #11 fixed: check_csrf() runs first.
     if not login_required("admin"):
         return redirect(url_for("login"))
     host = request.form.get("host", "")

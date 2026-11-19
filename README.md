@@ -23,6 +23,8 @@ The state handed in on 22 October 2026 is tagged `submitted-2026-10-22`.
 | Class 7 — fix the login | HAOJIE SONG (2023905496) | [Login fix and audit](reports/class7-login-fix.md) | `verify_jwt` accepts only HS256; long random `JWT_SECRET` in `docker-compose.yml`, no default in the code |
 | Class 8 — IDOR fix | HAOJIE SONG (2023905496) | [IDOR fix and proof](reports/class8-idor-fix.md) | `/api/notes/<id>` checks ownership on the server; teachers and admins may read any note; other cross-user reads return 404 |
 | Class 9 — injection fix | HAOJIE SONG (2023905496) | [Injection fix and proof](reports/class9-injection-fix.md) | `login` uses a parameterised query (`%s` + tuple); `admin_ping` runs `subprocess.run(["ping", "-c", "1", host])` without a shell |
+| Class 10 — stored XSS fix | HAOJIE SONG (2023905496) | [Stored XSS fix and proof](reports/class10-stored-xss-fix.md) | `dashboard.html` and `teacher.html` no longer switch autoescaping off, so a grade comment is shown as text and never run |
+| Class 11 — CSRF fix | HAOJIE SONG (2023905496) | [CSRF fix and proof](reports/class11-csrf-fix.md) | one `secrets.token_urlsafe` token per session, checked on every POST except `login`; hidden `csrf_token` field in every POST form; `SameSite=Lax` cookie |
 
 After Class 5 the app runs on plain HTTP again, as the lab's cleanup step asks.
 Passwords stay stored with Argon2: each seeded account upgrades at its next successful login.
@@ -68,7 +70,7 @@ encrypted comments unreadable or invalidates older signed exports.
 Run the checks in the running web container:
 
 ```
-docker compose exec -T -e NOTESAPP_RUN_APP_TESTS=1 web python runtime.py python -m unittest test_comment_encryption test_csv_integrity test_key_config test_password_storage test_jwt -v
+docker compose exec -T -e NOTESAPP_RUN_APP_TESTS=1 web python runtime.py python -m unittest test_comment_encryption test_csv_integrity test_key_config test_password_storage test_jwt test_csrf -v
 ```
 
 The tests create and remove temporary notes and test accounts; the seeded rows stay.

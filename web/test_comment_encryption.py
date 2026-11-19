@@ -13,6 +13,9 @@ import unittest
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from comment_crypto import CommentCipher, CommentIntegrityError, PREFIX
 
+# Class 11: every POST must carry the session's CSRF token, so these tests seed one.
+CSRF = "test-csrf-token"
+
 
 class CipherTests(unittest.TestCase):
     def setUp(self):
@@ -91,6 +94,7 @@ class AppTests(unittest.TestCase):
             session["user_id"] = 6 if role == "student" else 2
             session["username"] = "alice" if role == "student" else "prof.turing"
             session["role"] = role
+            session["csrf"] = CSRF
 
     def stored(self):
         with self.conn.cursor() as cur:
@@ -131,7 +135,7 @@ class AppTests(unittest.TestCase):
         self.identity("teacher")
         value = "Updated Session03 comment."
         response = self.client.post("/grades", data={"note_id": str(self.note_id),
-                                    "grade": "15", "comment": value})
+                                    "grade": "15", "comment": value, "csrf_token": CSRF})
         self.assertEqual(302, response.status_code)
         self.assertNotIn(value, self.stored())
         self.assertEqual(value, self.cipher.decrypt(self.note_id, self.stored()))
@@ -142,7 +146,8 @@ class AppTests(unittest.TestCase):
             cur.execute("SELECT id FROM notes")
             before = {row["id"] for row in cur.fetchall()}
         response = self.client.post("/grades", data={"student_id": "6", "class_id": "1",
-                                    "grade": "15", "comment": "Created Session03 comment."})
+                                    "grade": "15", "comment": "Created Session03 comment.",
+                                    "csrf_token": CSRF})
         with self.conn.cursor() as cur:
             cur.execute("SELECT id, comment FROM notes")
             added = [row for row in cur.fetchall() if row["id"] not in before]

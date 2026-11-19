@@ -11,6 +11,9 @@ import unittest
 
 from csv_integrity import CsvIntegrity, CsvIntegrityError
 
+# Class 11: every POST must carry the session's CSRF token, so these tests seed one.
+CSRF = "test-csrf-token"
+
 
 class CsvIntegrityTests(unittest.TestCase):
     def setUp(self):
@@ -106,10 +109,10 @@ class CsvAppTests(unittest.TestCase):
     def setUp(self):
         self.client = self.module.app.test_client()
         with self.client.session_transaction() as session:
-            session.update(user_id=2, username="prof.turing", role="teacher")
+            session.update(user_id=2, username="prof.turing", role="teacher", csrf=CSRF)
 
     def upload(self, data):
-        response = self.client.post("/verify-export", data={"file": (io.BytesIO(data), "grades.csv")})
+        response = self.client.post("/verify-export", data={"csrf_token": CSRF, "file": (io.BytesIO(data), "grades.csv")})
         self.addCleanup(response.close)
         self.addCleanup(response.request.environ["wsgi.input"].close)
         return response
@@ -145,7 +148,7 @@ class CsvAppTests(unittest.TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_missing_and_unsigned_files_are_rejected(self):
-        self.assertEqual(400, self.client.post("/verify-export", data={}).status_code)
+        self.assertEqual(400, self.client.post("/verify-export", data={"csrf_token": CSRF}).status_code)
         self.assertEqual(400, self.upload(b"student,class,grade,comment\r\n").status_code)
 
     def test_upload_size_is_bounded(self):
@@ -157,6 +160,7 @@ class CsvAppTests(unittest.TestCase):
         for role in (None, "student"):
             with self.client.session_transaction() as session:
                 session.clear()
+                session["csrf"] = CSRF
                 if role:
                     session.update(user_id=6, username="alice", role=role)
             for path in ("/export.csv", "/verify-export"):
